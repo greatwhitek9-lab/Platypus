@@ -156,11 +156,11 @@ Expected USB identity while in bootloader mode:
 From the repo root:
 
 ```bash
-chmod +x scripts/*.sh tools/*.py install.sh
-./scripts/flash_uf2.sh releases/platypus-hci-usb-HT-n5262-offset1000.uf2
+chmod +x install.sh scripts/*.sh tools/*.py
+./install.sh --skip-build
 ```
 
-The script waits for the `HT-n5262` UF2 drive, copies the firmware, syncs the filesystem, and unmounts the drive.
+The installer waits for the `HT-n5262` UF2 drive, copies the firmware, syncs the filesystem, and unmounts the drive.
 
 ### 3. Replug normally
 
@@ -186,22 +186,18 @@ chmod +x install.sh scripts/*.sh tools/*.py
 
 The one-shot installer will:
 
-1. Build the Zephyr Bluetooth HCI USB firmware.
-2. Force the HT-n5262 app offset to `0x1000`.
-3. Patch the UF2 family to `0x239a0071`.
-4. Flash the Heltec T114 UF2 drive.
-5. Verify that BlueZ sees the controller.
+1. Use a prebuilt release UF2 if Zephyr is not available.
+2. Build the Zephyr Bluetooth HCI USB firmware if your Zephyr workspace is available.
+3. Force the HT-n5262 app offset to `0x1000`.
+4. Patch the UF2 family to `0x239a0071`.
+5. Flash the Heltec T114 UF2 drive.
+6. Verify that Linux and BlueZ can see the controller.
 
-This assumes your Zephyr workspace exists at:
-
-```text
-$HOME/ble-dongle-build/zephyrproject/zephyr
-```
-
-and your Zephyr virtual environment has `west` at:
+The default Zephyr paths are:
 
 ```text
-$HOME/ble-dongle-build/.venv/bin/west
+ZEPHYR_BASE=$HOME/ble-dongle-build/zephyrproject/zephyr
+WEST=$HOME/ble-dongle-build/.venv/bin/west
 ```
 
 You can override those paths:
@@ -212,9 +208,198 @@ ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh
 
 ---
 
+## Installer options
+
+`install.sh` supports several modes depending on whether you want a full build, a quick flash, or just verification.
+
+### Show help
+
+Use this to print every available option:
+
+```bash
+./install.sh --help
+```
+
+### Standard full install
+
+Use this when you want Platypus to build, patch, flash, and verify in one run:
+
+```bash
+./install.sh
+```
+
+Best for: normal development machines that already have a working Zephyr environment.
+
+What it does:
+
+1. Checks for Zephyr and `west`.
+2. Builds the HCI USB firmware if possible.
+3. Creates the patched HT-n5262 UF2.
+4. Prompts you to double-tap `RST`.
+5. Flashes the board.
+6. Prompts you to replug normally.
+7. Verifies USB and BlueZ status.
+
+### Flash-only / skip-build mode
+
+Use this when the repo already contains the working UF2 and you do **not** want to rebuild firmware:
+
+```bash
+./install.sh --skip-build
+```
+
+`--flash-only` is also supported and behaves the same way:
+
+```bash
+./install.sh --flash-only
+```
+
+Best for: quickly flashing a board using the existing file:
+
+```text
+releases/platypus-hci-usb-HT-n5262-offset1000.uf2
+```
+
+What it does:
+
+1. Skips Zephyr build completely.
+2. Uses the existing release UF2.
+3. Waits for the HT-n5262 UF2 drive.
+4. Copies the UF2 to the board.
+5. Verifies after replug unless `--no-verify` is also used.
+
+### Build-only mode
+
+Use this when you want to generate or validate the patched UF2 but do **not** want to flash the board yet:
+
+```bash
+./install.sh --no-flash
+```
+
+Best for: checking that the build and UF2 patch are correct before touching hardware.
+
+Expected final UF2:
+
+```text
+releases/platypus-hci-usb-HT-n5262-offset1000.uf2
+```
+
+Expected metadata:
+
+```text
+Address min: 0x00001000
+Families: ['0x239a0071']
+```
+
+### Skip verification
+
+Use this when you only want to flash and do not want the script to restart Bluetooth or check BlueZ:
+
+```bash
+./install.sh --skip-build --no-verify
+```
+
+Best for: systems where you do not want services restarted, or when you are flashing from a machine that will not be the final Bluetooth host.
+
+### Install common dependencies
+
+Use this on a fresh Kali/Debian-style system to install common build and host-side utilities:
+
+```bash
+./install.sh --install-deps
+```
+
+This uses `apt` to install common packages such as:
+
+```text
+git python3 python3-venv python3-pip cmake ninja-build gperf ccache
+dfu-util device-tree-compiler wget curl xz-utils file make gcc g++
+bluez usbutils util-linux
+```
+
+You can combine it with the normal install:
+
+```bash
+./install.sh --install-deps
+```
+
+Or combine it with build-only mode:
+
+```bash
+./install.sh --install-deps --no-flash
+```
+
+### Assume yes for prompts
+
+Use this when you want fewer interactive prompts:
+
+```bash
+./install.sh --yes
+```
+
+Important: even with `--yes`, you still need to physically put the board into UF2 mode when flashing, and physically unplug/replug after flashing.
+
+Common unattended-style build-only command:
+
+```bash
+./install.sh --yes --no-flash
+```
+
+Common flash command using existing UF2:
+
+```bash
+./install.sh --yes --skip-build
+```
+
+### Custom Zephyr workspace
+
+Use this when your Zephyr workspace is not in the default location:
+
+```bash
+ZEPHYR_BASE=/home/urbanpoacher/my-zephyr/zephyr \
+WEST=/home/urbanpoacher/my-zephyr/.venv/bin/west \
+./install.sh
+```
+
+### Custom release UF2 path
+
+Use this when you want to flash a specific UF2 file:
+
+```bash
+RELEASE_UF2=/path/to/platypus.uf2 ./install.sh --skip-build
+```
+
+### Custom mount path
+
+By default, the script mounts the UF2 drive at:
+
+```text
+/mnt/t114
+```
+
+Override it with:
+
+```bash
+MOUNT_DIR=/tmp/t114 ./install.sh --skip-build
+```
+
+### Recommended commands by situation
+
+| Situation | Command |
+|---|---|
+| Full build, flash, verify | `./install.sh` |
+| Flash existing UF2 only | `./install.sh --skip-build` |
+| Flash existing UF2 and skip BlueZ checks | `./install.sh --skip-build --no-verify` |
+| Build UF2 only | `./install.sh --no-flash` |
+| Install dependencies first | `./install.sh --install-deps` |
+| Use custom Zephyr path | `ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh` |
+| Use custom UF2 | `RELEASE_UF2=/path/to/file.uf2 ./install.sh --skip-build` |
+
+---
+
 ## Manual build
 
-Use this if you want to rebuild the UF2 yourself.
+Use this if you want to rebuild the UF2 yourself without the root installer.
 
 ```bash
 chmod +x scripts/*.sh tools/*.py
@@ -374,13 +559,13 @@ Likely causes:
 Rebuild with:
 
 ```bash
-./scripts/build_platypus.sh
+./install.sh --no-flash
 ```
 
 Then flash again:
 
 ```bash
-./scripts/flash_uf2.sh
+./install.sh --skip-build
 ```
 
 ### No `hci1`
@@ -422,11 +607,17 @@ cd ~/ble-dongle-build/zephyrproject/zephyr
 west help | grep build
 ```
 
-The Platypus build script expects:
+The Platypus installer expects:
 
 ```text
 ~/ble-dongle-build/.venv/bin/west
 ~/ble-dongle-build/zephyrproject/zephyr
+```
+
+You can override those paths with:
+
+```bash
+ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh
 ```
 
 ---
