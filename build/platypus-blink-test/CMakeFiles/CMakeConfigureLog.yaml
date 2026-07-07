@@ -1,0 +1,3345 @@
+
+---
+events:
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:28 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    name: "ZephyrBuildConfiguration"
+    configs:
+      -
+        filename: "ZephyrBuild.cps"
+        kind: "cps"
+      -
+        filename: "zephyrbuild.cps"
+        kind: "cps"
+      -
+        filename: "ZephyrBuildConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyrbuild-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: false
+      bypass_provider: false
+      names:
+        - "ZephyrBuild"
+      search_paths:
+        - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/../*"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: false
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: false
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: false
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/tools/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/.west/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/lib/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/lib/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/share/cps/ZephyrBuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/share/cps/zephyrbuild.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:41 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    name: "ZephyrAppConfiguration"
+    configs:
+      -
+        filename: "ZephyrApp.cps"
+        kind: "cps"
+      -
+        filename: "zephyrapp.cps"
+        kind: "cps"
+      -
+        filename: "ZephyrAppConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyrapp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: false
+      bypass_provider: false
+      names:
+        - "ZephyrApp"
+      search_paths:
+        - "/home/urbanpoacher/Platypus/firmware/blink-test"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: false
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: false
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: false
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/ZephyrAppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/zephyrapp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/ZephyrApp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/zephyrapp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/ZephyrApp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/zephyrapp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/ZephyrAppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/zephyrapp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/lib/cps/ZephyrApp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/lib/cps/zephyrapp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/share/cps/ZephyrApp.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/firmware/blink-test/share/cps/zephyrapp.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindZephyr-sdk.cmake:102 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:51 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    name: "Zephyr-sdk"
+    components:
+      -
+        name: "LOAD"
+        required: false
+        found: false
+    configs:
+      -
+        filename: "Zephyr-sdk.cps"
+        kind: "cps"
+      -
+        filename: "zephyr-sdk.cps"
+        kind: "cps"
+      -
+        filename: "Zephyr-sdkConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyr-sdk-config.cmake"
+        kind: "cmake"
+    version_request:
+      version: "0.0.0"
+      version_complete: "0.0.0"
+      exact: true
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Zephyr-sdk"
+      search_paths:
+        - "/usr"
+        - "/usr/local"
+        - "/opt"
+        - "/home/urbanpoacher"
+        - "/home/urbanpoacher/.local"
+        - "/home/urbanpoacher/.local/opt"
+        - "/home/urbanpoacher/bin"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/.venv/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.npm-global/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/.local/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/local/games/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/games/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/games/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/games/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/games/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/games/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/usr/games/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "insufficient_version"
+        message: "The version found is not compatible with the version requested."
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/opt/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "insufficient_version"
+        message: "The version found is not compatible with the version requested."
+      -
+        path: "/home/urbanpoacher/zephyr-sdk-1.0.1/cmake/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/lib/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/lib/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/share/cps/Zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/share/cps/zephyr-sdk.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:54 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "GPERF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gperf"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/gperf"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/gperf"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/gperf"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/gperf"
+      - "/home/urbanpoacher/.npm-global/bin/gperf"
+      - "/home/urbanpoacher/.local/bin/gperf"
+      - "/usr/local/sbin/gperf"
+      - "/usr/sbin/gperf"
+      - "/sbin/gperf"
+      - "/usr/local/bin/gperf"
+    found: "/usr/bin/gperf"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:57 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "OPENOCD"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "openocd"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/openocd"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:60 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "BOSSAC"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "bossac"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/bossac"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:65 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "IMGTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "imgtool.py"
+      - "imgtool"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/mcuboot/scripts/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/imgtool.py"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/imgtool"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/imgtool.py"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/imgtool"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/imgtool.py"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/imgtool"
+    found: "/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/mcuboot/scripts/imgtool.py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:68 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "PTY_INTERFACE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "winpty"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/winpty"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/winpty"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/winpty"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/winpty"
+      - "/home/urbanpoacher/.npm-global/bin/winpty"
+      - "/home/urbanpoacher/.local/bin/winpty"
+      - "/usr/local/sbin/winpty"
+      - "/usr/sbin/winpty"
+      - "/sbin/winpty"
+      - "/usr/local/bin/winpty"
+      - "/usr/bin/winpty"
+      - "/bin/winpty"
+      - "/usr/local/games/winpty"
+      - "/usr/games/winpty"
+      - "/home/urbanpoacher/.dotnet/tools/winpty"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/compiler/gcc/generic.cmake:5 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:125 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcc"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/compiler/gcc/generic.cmake:6 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindHostTools.cmake:125 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GCOV"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcov"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcov"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindDtc.cmake:19 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/dts.cmake:10 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:128 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "DTC"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dtc"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/dtc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindCcache.cmake:25 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:29 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CCACHE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ccache"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/ccache"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/ccache"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/ccache"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/ccache"
+      - "/home/urbanpoacher/.npm-global/bin/ccache"
+      - "/home/urbanpoacher/.local/bin/ccache"
+      - "/usr/local/sbin/ccache"
+      - "/usr/sbin/ccache"
+      - "/sbin/ccache"
+      - "/usr/local/bin/ccache"
+    found: "/usr/bin/ccache"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/compiler/gcc/target.cmake:8 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:116 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/compiler/gcc/target.cmake:26 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:116 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:5 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-objcopy"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-objcopy"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:6 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:7 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_AS"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-as"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-as"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:12 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:13 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:15 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:16 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:17 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-strip"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-strip"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:19 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GDB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb-py"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb-py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/bintools/gnu/target.cmake:31 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/FindTargetTools.cmake:119 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GDB_NO_PY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/uname"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/uname"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/uname"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/uname"
+      - "/home/urbanpoacher/.npm-global/bin/uname"
+      - "/home/urbanpoacher/.local/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/sbin/uname"
+      - "/sbin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineSystem.cmake:207 (message)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    message: |
+      The target system is: Generic - 4.4.99 - arm
+      The host system is: Linux - 7.0.12+kali-amd64 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/ninja-build"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/ninja"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/samu"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/ninja-build"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/ninja"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/samu"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/ninja-build"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/ninja"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/samu"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/ninja-build"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/ninja"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/samu"
+      - "/home/urbanpoacher/.npm-global/bin/ninja-build"
+      - "/home/urbanpoacher/.npm-global/bin/ninja"
+      - "/home/urbanpoacher/.npm-global/bin/samu"
+      - "/home/urbanpoacher/.local/bin/ninja-build"
+      - "/home/urbanpoacher/.local/bin/ninja"
+      - "/home/urbanpoacher/.local/bin/samu"
+      - "/usr/local/sbin/ninja-build"
+      - "/usr/local/sbin/ninja"
+      - "/usr/local/sbin/samu"
+      - "/usr/sbin/ninja-build"
+      - "/usr/sbin/ninja"
+      - "/usr/sbin/samu"
+      - "/sbin/ninja-build"
+      - "/sbin/ninja"
+      - "/sbin/samu"
+      - "/usr/local/bin/ninja-build"
+      - "/usr/local/bin/ninja"
+      - "/usr/local/bin/samu"
+      - "/usr/bin/ninja-build"
+    found: "/usr/bin/ninja"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.3/Modules/"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/"
+    found: "/usr/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/4.3.4/CompilerIdC/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-dlltool"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-dlltool"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-dlltool"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-dlltool"
+      - "/usr/local/sbin/arm-zephyr-eabi-dlltool"
+      - "/usr/sbin/arm-zephyr-eabi-dlltool"
+      - "/sbin/arm-zephyr-eabi-dlltool"
+      - "/usr/local/bin/arm-zephyr-eabi-dlltool"
+      - "/usr/bin/arm-zephyr-eabi-dlltool"
+      - "/bin/arm-zephyr-eabi-dlltool"
+      - "/usr/local/games/arm-zephyr-eabi-dlltool"
+      - "/usr/games/arm-zephyr-eabi-dlltool"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-dlltool"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/dlltool"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/dlltool"
+      - "/home/urbanpoacher/.npm-global/bin/dlltool"
+      - "/home/urbanpoacher/.local/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/bin/dlltool"
+      - "/bin/dlltool"
+      - "/usr/local/games/dlltool"
+      - "/usr/games/dlltool"
+      - "/home/urbanpoacher/.dotnet/tools/dlltool"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-addr2line"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-tapi"
+      - "tapi"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-tapi"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-tapi"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-tapi"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-tapi"
+      - "/usr/local/sbin/arm-zephyr-eabi-tapi"
+      - "/usr/sbin/arm-zephyr-eabi-tapi"
+      - "/sbin/arm-zephyr-eabi-tapi"
+      - "/usr/local/bin/arm-zephyr-eabi-tapi"
+      - "/usr/bin/arm-zephyr-eabi-tapi"
+      - "/bin/arm-zephyr-eabi-tapi"
+      - "/usr/local/games/arm-zephyr-eabi-tapi"
+      - "/usr/games/arm-zephyr-eabi-tapi"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-tapi"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/tapi"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/tapi"
+      - "/home/urbanpoacher/.npm-global/bin/tapi"
+      - "/home/urbanpoacher/.local/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/local/games/tapi"
+      - "/usr/games/tapi"
+      - "/home/urbanpoacher/.dotnet/tools/tapi"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ar-14.3"
+      - "arm-zephyr-eabi-gcc-ar-14"
+      - "arm-zephyr-eabi-gcc-ar14"
+      - "arm-zephyr-eabi-gcc-ar"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar14"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "arm-zephyr-eabi-gcc-ranlib-14"
+      - "arm-zephyr-eabi-gcc-ranlib14"
+      - "arm-zephyr-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib14"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake-4.3/Modules/"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/"
+    found: "/usr/share/cmake-4.3/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/4.3.4/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ar-14.3"
+      - "arm-zephyr-eabi-gcc-ar-14"
+      - "arm-zephyr-eabi-gcc-ar14"
+      - "arm-zephyr-eabi-gcc-ar"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/bin/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-14.3"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/bin/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-14"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/sbin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/bin/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar14"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "arm-zephyr-eabi-gcc-ranlib-14"
+      - "arm-zephyr-eabi-gcc-ranlib14"
+      - "arm-zephyr-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-14.3"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-14"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib14"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib14"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib14"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineASMCompiler.cmake:61 (_cmake_find_compiler)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER"
+    description: "ASM compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineCompilerId.cmake:1296 (message)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      arm-zephyr-eabi-gcc (Zephyr SDK 1.0.1) 14.3.0
+      Copyright (C) 2024 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ar-"
+      - "arm-zephyr-eabi-gcc-ar-"
+      - "arm-zephyr-eabi-gcc-ar"
+      - "arm-zephyr-eabi-gcc-ar"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/sbin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/bin/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ar-"
+      - "/usr/games/arm-zephyr-eabi-gcc-ar-"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ar-"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake-4.3/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:146 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:2 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "arm-zephyr-eabi-gcc-ranlib-"
+      - "arm-zephyr-eabi-gcc-ranlib-"
+      - "arm-zephyr-eabi-gcc-ranlib"
+      - "arm-zephyr-eabi-gcc-ranlib"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.npm-global/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.local/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/sbin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/bin/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/local/games/arm-zephyr-eabi-gcc-ranlib-"
+      - "/usr/games/arm-zephyr-eabi-gcc-ranlib-"
+      - "/home/urbanpoacher/.dotnet/tools/arm-zephyr-eabi-gcc-ranlib-"
+    found: "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake-4.3/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake:105 (cmake_check_compiler_flag)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/extensions.cmake:2576 (check_c_compiler_flag)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/extensions.cmake:1246 (check_compiler_flag)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/extensions.cmake:2615 (zephyr_check_compiler_flag)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/extensions.cmake:2591 (target_cc_option_fallback)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules/extensions.cmake:156 (target_cc_option)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/CMakeLists.txt:635 (zephyr_cc_option)"
+    directories:
+      source: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/CMakeScratch/TryCompile-Rg77Hp"
+      binary: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/CMakeScratch/TryCompile-Rg77Hp"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/modules"
+    buildResult:
+      variable: "check_fmacro_prefix_map__home_urbanpoacher_Platypus_firmware_blink_test_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_urbanpoacher_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem___home_urbanpoacher_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd"
+      cached: true
+      stdout: |
+        Change Dir: '/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/CMakeScratch/TryCompile-Rg77Hp'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_e138d
+        [1/2] /home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Dcheck_fmacro_prefix_map__home_urbanpoacher_Platypus_firmware_blink_test_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___home_urbanpoacher_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem___home_urbanpoacher_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd  -nostartfiles -nostdlib -isystem "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -isystem "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd   -fmacro-prefix-map=/home/urbanpoacher/Platypus/firmware/blink-test=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_e138d.dir/src.c.obj -c /home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/CMakeScratch/TryCompile-Rg77Hp/src.c
+        [2/2] : && /home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -nostartfiles -nostdlib -isystem "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -isystem "/home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd  CMakeFiles/cmTC_e138d.dir/src.c.obj -o cmTC_e138d   && :
+        
+      exitCode: 0
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/lib/picolibc/CMakeLists.txt:49 (find_program)"
+    mode: "program"
+    variable: "CCACHE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ccache"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/ccache"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/ccache"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/ccache"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/ccache"
+      - "/home/urbanpoacher/.npm-global/bin/ccache"
+      - "/home/urbanpoacher/.local/bin/ccache"
+      - "/usr/local/sbin/ccache"
+      - "/usr/sbin/ccache"
+      - "/sbin/ccache"
+      - "/usr/local/bin/ccache"
+    found: "/usr/bin/ccache"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/kobj.cmake:3 (find_program)"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/CMakeLists.txt:986 (include)"
+    mode: "program"
+    variable: "GEN_KOBJECT_LIST"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gen_kobject_list"
+      - "gen_kobject_list.py"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/scripts/build/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/gen_kobject_list"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/gen_kobject_list"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/gen_kobject_list"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/gen_kobject_list"
+      - "/home/urbanpoacher/.npm-global/bin/gen_kobject_list"
+      - "/home/urbanpoacher/.local/bin/gen_kobject_list"
+      - "/usr/local/sbin/gen_kobject_list"
+      - "/usr/sbin/gen_kobject_list"
+      - "/sbin/gen_kobject_list"
+      - "/usr/local/bin/gen_kobject_list"
+      - "/usr/bin/gen_kobject_list"
+      - "/bin/gen_kobject_list"
+      - "/usr/local/games/gen_kobject_list"
+      - "/usr/games/gen_kobject_list"
+      - "/home/urbanpoacher/.dotnet/tools/gen_kobject_list"
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/scripts/build/gen_kobject_list"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/gen_kobject_list.py"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/gen_kobject_list.py"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/gen_kobject_list.py"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/gen_kobject_list.py"
+      - "/home/urbanpoacher/.npm-global/bin/gen_kobject_list.py"
+      - "/home/urbanpoacher/.local/bin/gen_kobject_list.py"
+      - "/usr/local/sbin/gen_kobject_list.py"
+      - "/usr/sbin/gen_kobject_list.py"
+      - "/sbin/gen_kobject_list.py"
+      - "/usr/local/bin/gen_kobject_list.py"
+      - "/usr/bin/gen_kobject_list.py"
+      - "/bin/gen_kobject_list.py"
+      - "/usr/local/games/gen_kobject_list.py"
+      - "/usr/games/gen_kobject_list.py"
+      - "/home/urbanpoacher/.dotnet/tools/gen_kobject_list.py"
+    found: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/scripts/build/gen_kobject_list.py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/reports/CMakeLists.txt:115 (find_program)"
+    mode: "program"
+    variable: "PUNCOVER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "puncover"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/puncover"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/puncover"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/puncover"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/puncover"
+      - "/home/urbanpoacher/.npm-global/bin/puncover"
+      - "/home/urbanpoacher/.local/bin/puncover"
+      - "/usr/local/sbin/puncover"
+      - "/usr/sbin/puncover"
+      - "/sbin/puncover"
+      - "/usr/local/bin/puncover"
+      - "/usr/bin/puncover"
+      - "/bin/puncover"
+      - "/usr/local/games/puncover"
+      - "/usr/games/puncover"
+      - "/home/urbanpoacher/.dotnet/tools/puncover"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/reports/CMakeLists.txt:142 (find_program)"
+    mode: "program"
+    variable: "PAHOLE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "pahole"
+    candidate_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/"
+      - "/home/urbanpoacher/.npm-global/bin/"
+      - "/home/urbanpoacher/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/games/"
+      - "/usr/games/"
+      - "/home/urbanpoacher/.dotnet/tools/"
+    searched_directories:
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/pahole"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/sbin/pahole"
+      - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/pahole"
+      - "/home/urbanpoacher/ble-dongle-build/.venv/bin/pahole"
+      - "/home/urbanpoacher/.npm-global/bin/pahole"
+      - "/home/urbanpoacher/.local/bin/pahole"
+      - "/usr/local/sbin/pahole"
+      - "/usr/sbin/pahole"
+      - "/sbin/pahole"
+      - "/usr/local/bin/pahole"
+    found: "/usr/bin/pahole"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:2 (find_package)"
+    name: "Zephyr"
+    configs:
+      -
+        filename: "Zephyr.cps"
+        kind: "cps"
+      -
+        filename: "zephyr.cps"
+        kind: "cps"
+      -
+        filename: "ZephyrConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyr-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      hints:
+        - "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr"
+      names:
+        - "Zephyr"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/Zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/lib/cps/zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/Zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/Platypus/build/platypus-blink-test/CMakeFiles/pkgRedirects/share/cps/zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/cmake/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/lib/cps/Zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/lib/cps/zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/cps/Zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/cps/zephyr.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyrunittest-package/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyrunittest-package/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyrunittest-package/cmake/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyrunittest-package/cmake/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake"
+      mode: "config"
+      version: "4.4.99"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/urbanpoacher/ble-dongle-build/.venv/bin"
+        - "/home/urbanpoacher/.npm-global/bin"
+        - "/home/urbanpoacher/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/games"
+        - "/usr/games"
+        - "/home/urbanpoacher/.dotnet/tools"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+...

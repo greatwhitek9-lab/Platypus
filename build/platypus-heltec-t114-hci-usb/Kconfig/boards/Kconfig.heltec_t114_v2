@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/Kconfig.heltec_t114_v2"

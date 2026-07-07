@@ -1,0 +1,62 @@
+cmake:
+  application:
+    configuration-dir: '/home/urbanpoacher/Platypus/firmware/platypus-hci-usb'
+    source-dir: '/home/urbanpoacher/Platypus/firmware/platypus-hci-usb'
+  board:
+    name: 'heltec_t114_v2'
+    path:
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2'
+    qualifiers: 'nrf52840/uf2'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/bindings'
+    files:
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/heltec_t114_v2_nrf52840_uf2.dts'
+    include-dirs:
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/ambiq/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/atmel/include'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/bouffalolab/include'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/gigadevice/include'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/microchip/include'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/microchip/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/nuvoton/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/nxp/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/stm32/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/ti/dts'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/common'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/vendor'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/rx'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/x86'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/xtensa'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/sparc'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/riscv'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/posix'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm64'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arc'
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts'
+  kconfig:
+    files:
+     - '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/heltec_t114_v2_nrf52840_uf2_defconfig'
+     - '/home/urbanpoacher/Platypus/firmware/platypus-hci-usb/prj.conf'
+     - '/home/urbanpoacher/Platypus/build/platypus-hci-usb-offset1000/zephyr/misc/generated/extra_kconfig_options.conf'
+    user-files:
+     - '/home/urbanpoacher/Platypus/firmware/platypus-hci-usb/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/urbanpoacher/zephyr-sdk-1.0.1'
+  vendor-specific:
+    nordic:
+      svdfile: '/home/urbanpoacher/ble-dongle-build/zephyrproject/modules/hal/nordic/nrfx/bsp/stable/mdk/nrf52/nrf52840/nrf52840.svd'
+  zephyr:
+    version: '4.4.99'
+    zephyr-base: '/home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/urbanpoacher/ble-dongle-build/.venv/bin/west build -p always -b heltec_t114_v2/nrf52840/uf2 /home/urbanpoacher/Platypus/firmware/platypus-hci-usb -d /home/urbanpoacher/Platypus/build/platypus-hci-usb-offset1000 -- -DCONFIG_FLASH_LOAD_OFFSET=0x1000'
+  topdir: '/home/urbanpoacher/ble-dongle-build/zephyrproject'
+  version: '1.5.0'

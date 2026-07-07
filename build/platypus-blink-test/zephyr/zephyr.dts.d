@@ -1,0 +1,37 @@
+empty_file.o: \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/misc/empty_file.c \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/heltec_t114_v2_nrf52840_uf2.dts \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/heltec_t114_v2_nrf52840_common.dts \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm/nordic/nrf52840_qiaa.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/common/mem.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm/nordic/nrf52840.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm/armv7-m.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/common/skeleton.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/vendor/nordic/nrf_common.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/adc.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/dt-util.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_macro.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_internal.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_loops.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_listify.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_internal_is_eq.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_inc.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_dec.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/sys/util_internal_util_x2.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/i2c/i2c.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/nrf-pinctrl.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/sensor/qdec_nrf.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/common/freq.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/arm/nordic/override.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/nrf-saadc.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/regulator/nrf5x.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2/heltec_t114_v2-pinctrl.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/led/led.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/display/panel.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/mipi_dbi/mipi_dbi.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/include/zephyr/dt-bindings/lora/sx126x.h \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/common/usb/cdc_acm_serial.dtsi \
+ /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/dts/vendor/nordic/nrf52840_partition_uf2_sdv6.dtsi

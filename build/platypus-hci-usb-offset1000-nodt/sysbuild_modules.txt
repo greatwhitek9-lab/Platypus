@@ -1,0 +1,1 @@
+"mcuboot":"/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/mcuboot":"/home/urbanpoacher/ble-dongle-build/zephyrproject/bootloader/mcuboot/boot/zephyr/sysbuild"

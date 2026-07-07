@@ -1,0 +1,39 @@
+# Available runners configured by board.cmake.
+runners:
+- uf2
+- jlink
+- pyocd
+
+# Default flash runner if --runner is not given.
+flash-runner: uf2
+
+# Default debug runner if --runner is not given.
+debug-runner: jlink
+
+# Common runner configuration values.
+config:
+  board_dir: /home/urbanpoacher/ble-dongle-build/zephyrproject/zephyr/boards/heltec/heltec_t114_v2
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  uf2_file: zephyr.uf2
+  # Host tools:
+  gdb: /home/urbanpoacher/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb
+  openocd: /home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/bin/openocd
+  openocd_search:
+    - /home/urbanpoacher/zephyr-sdk-1.0.1/hosttools/sysroots/x86_64-pokysdk-linux/usr/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  uf2:
+    []
+
+  jlink:
+    - --dt-flash=y
+    - --device=nRF52840_xxAA
+    - --speed=4000
+  pyocd:
+    - --dt-flash=y
+    - --target=nrf52840
+    - --frequency=4000000
