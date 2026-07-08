@@ -1,0 +1,72 @@
+menu "Naughty Platypus Ubertooth-Style Lab Suite"
+
+config NP_ENABLE_PASSIVE_SURVEY
+    bool "Enable passive BLE advertisement survey"
+    default y
+    help
+      Enables passive BLE advertisement observation, RSSI logging, and
+      advertisement metadata parsing.
+
+config NP_ENABLE_ADV_ANALYZER
+    bool "Enable BLE advertisement analyzer"
+    default y
+    help
+      Enables BLE advertisement metadata parsing for names, flags, TX power,
+      manufacturer-data previews, and service-data previews.
+
+config NP_ENABLE_RSSI_SURVEY
+    bool "Enable RSSI survey counters"
+    default y
+    help
+      Enables signal survey counters for lab positioning, antenna, and enclosure tests.
+
+config NP_ENABLE_CHANNEL_SURVEY_PLACEHOLDER
+    bool "Enable channel survey safe lab status"
+    default y
+    help
+      Placeholder only. Standard Zephyr BLE observer mode is not a raw Ubertooth
+      channel-hop sniffer.
+
+config NP_ENABLE_BLE_CONNECTION_FOLLOW_PLACEHOLDER
+    bool "Enable BLE connection-follow safe lab status"
+    default y
+    help
+      Placeholder only. No connection-following or private-payload capture logic
+      is included.
+
+config NP_ENABLE_BLE_GATT_MUTATION_PLACEHOLDER
+    bool "Enable GATT read-only audit status"
+    default y
+    help
+      Placeholder only. No GATT fuzzing, mutation, or unauthorized write logic
+      is included.
+
+config NP_ENABLE_BLE_PAIRING_LAB_PLACEHOLDER
+    bool "Enable pairing policy status check"
+    default y
+    help
+      Placeholder only. No forced pairing, coercion, or credential capture logic
+      is included.
+
+config NP_ENABLE_BLE_ADV_TX_PLACEHOLDER
+    bool "Enable local advertising self-test status"
+    default y
+    help
+      Placeholder only. No spoofing, impersonation, flooding, or deceptive
+      advertising behavior is included.
+
+config NP_ENABLE_BLE_STABILITY_STRESS_PLACEHOLDER
+    bool "Enable local firmware health self-test"
+    default y
+    help
+      Placeholder only. No flooding, denial-of-service, or disruption logic is
+      included.
+
+config NP_ENABLE_CLASSIC_BT_PLACEHOLDER
+    bool "Enable Bluetooth Classic placeholder"
+    default n
+    help
+      Placeholder only. The nRF52840 is BLE-focused and does not provide a
+      Bluetooth Classic BR/EDR sniffer equivalent to Ubertooth.
+
+endmenu

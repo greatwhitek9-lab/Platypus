@@ -1,0 +1,83 @@
+{
+  "profile": "naughty-platypus",
+  "default_policy": "deny",
+  "ht_n5262_build_fixes": {
+    "CONFIG_USE_DT_CODE_PARTITION": "n",
+    "CONFIG_FLASH_LOAD_OFFSET": "0x1000",
+    "CONFIG_FLASH_LOAD_SIZE": "0xdf000",
+    "UF2_FAMILY": "0x239a0071"
+  },
+  "notes": [
+    "Safe passive survey tools may be enabled by default.",
+    "Restricted tools are placeholders only.",
+    "Restricted tools must not ship with operational attack logic.",
+    "Only use in a closed lab with devices you own or have explicit permission to test.",
+    "Purple marker \ud83d\udfe3 indicates a private-lab replacement point, not included functionality.",
+    "Safe cipher edits applied: selected placeholders now execute safe status/reporting actions only."
+  ],
+  "tools": {
+    "ble_passive_survey": {
+      "enabled": true,
+      "risk": "low",
+      "status": "implemented"
+    },
+    "ble_adv_analyzer": {
+      "enabled": true,
+      "risk": "low",
+      "status": "implemented"
+    },
+    "ble_rssi_survey": {
+      "enabled": true,
+      "risk": "low",
+      "status": "implemented"
+    },
+    "ble_channel_survey": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_channel_survey with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    },
+    "ble_connection_follow": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_ble_connection_follow with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    },
+    "ble_gatt_mutation_lab": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_ble_gatt_mutation with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    },
+    "ble_pairing_security_lab": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_ble_pairing_lab with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    },
+    "ble_advertising_tx_lab": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_ble_adv_tx with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    },
+    "ble_stability_stress_lab": {
+      "enabled": true,
+      "risk": "restricted",
+      "status": "implemented",
+      "private_lab_change_marker": "\ud83d\udfe3 replace np_stub_ble_stability_stress with a private authorized implementation",
+      "safe_cipher_applied": true,
+      "active_behavior": "safe_status_reporting_only"
+    }
+  }
+}

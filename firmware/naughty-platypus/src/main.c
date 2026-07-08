@@ -1,69 +1,158 @@
-/*
- * Naughty Platypus passive BLE observer
- *
- * This app is intentionally passive: it observes BLE advertisements and prints
- * metadata as newline-delimited JSON for a host-side logger. It does not jam,
- * inject, connect, write GATT characteristics, or perform disruptive actions.
- */
+#include <errno.h>
+#include <stdio.h>
 
 #include <zephyr/kernel.h>
-#include <zephyr/sys/atomic.h>
 #include <zephyr/sys/printk.h>
+#include <zephyr/shell/shell.h>
 #include <zephyr/bluetooth/bluetooth.h>
-#include <zephyr/bluetooth/hci.h>
 
-static atomic_t adv_seen;
-static atomic_t scan_errors;
+#if defined(CONFIG_USB_DEVICE_STACK)
+#include <zephyr/usb/usb_device.h>
+#endif
 
-static void device_found(const bt_addr_le_t *addr, int8_t rssi, uint8_t type,
-                         struct net_buf_simple *ad)
+#include "passive_survey.h"
+#include "tool_registry.h"
+
+static bool bt_ready;
+
+static int cmd_scan_on(const struct shell *sh, size_t argc, char **argv)
 {
-    char addr_str[BT_ADDR_LE_STR_LEN];
-    uint32_t ms = k_uptime_get_32();
-    unsigned int count;
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
 
-    bt_addr_le_to_str(addr, addr_str, sizeof(addr_str));
-    count = (unsigned int)atomic_inc(&adv_seen) + 1U;
+    int err = np_passive_survey_start();
 
-    printk("{\"event\":\"adv\",\"ms\":%u,\"addr\":\"%s\",\"type\":%u,\"rssi\":%d,\"len\":%u,\"count\":%u}\n",
-           ms,
-           addr_str,
-           (unsigned int)type,
-           (int)rssi,
-           (unsigned int)ad->len,
-           count);
+    if (err) {
+        shell_error(sh, "scan_on failed: %d", err);
+        return err;
+    }
+
+    shell_print(sh, "passive BLE survey started");
+    return 0;
 }
+
+static int cmd_scan_off(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    int err = np_passive_survey_stop();
+
+    if (err) {
+        shell_error(sh, "scan_off failed: %d", err);
+        return err;
+    }
+
+    shell_print(sh, "passive BLE survey stopped");
+    return 0;
+}
+
+static int cmd_status(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    shell_print(sh, "bt_ready=%s survey_running=%s",
+                bt_ready ? "yes" : "no",
+                np_passive_survey_is_running() ? "yes" : "no");
+
+    return np_passive_survey_status();
+}
+
+static int cmd_reset_stats(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    shell_print(sh, "survey counters reset");
+    return np_passive_survey_reset();
+}
+
+static int cmd_tools_list(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    uint32_t count = 0;
+    const struct np_tool *tools = np_tools_get(&count);
+
+    for (uint32_t i = 0; i < count; i++) {
+        shell_print(sh,
+                    "%s | enabled=%s | risk=%s | status=%s | %s",
+                    tools[i].id,
+                    tools[i].enabled ? "true" : "false",
+                    np_risk_to_str(tools[i].risk),
+                    np_status_to_str(tools[i].status),
+                    tools[i].description);
+    }
+
+    return 0;
+}
+
+static int cmd_tools_run(const struct shell *sh, size_t argc, char **argv)
+{
+    if (argc < 2) {
+        shell_error(sh, "usage: np tools_run <tool_id>");
+        return -EINVAL;
+    }
+
+    int err = np_tool_run_by_id(argv[1]);
+
+    if (err == -EPERM) {
+        shell_error(sh, "tool disabled by build config: %s", argv[1]);
+    } else if (err == -ENOTSUP) {
+        shell_error(sh, "tool is stub-only / not implemented: %s", argv[1]);
+    } else if (err == -ENOENT) {
+        shell_error(sh, "unknown tool: %s", argv[1]);
+    } else if (err) {
+        shell_error(sh, "tool failed: %d", err);
+    }
+
+    return err;
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(sub_np,
+    SHELL_CMD(scan_on, NULL, "Start passive BLE advertisement survey", cmd_scan_on),
+    SHELL_CMD(scan_off, NULL, "Stop passive BLE advertisement survey", cmd_scan_off),
+    SHELL_CMD(status, NULL, "Show survey status and counters", cmd_status),
+    SHELL_CMD(reset_stats, NULL, "Reset survey counters", cmd_reset_stats),
+    SHELL_CMD(tools_list, NULL, "List safe and restricted tool registry", cmd_tools_list),
+    SHELL_CMD(tools_run, NULL, "Run enabled tool by ID", cmd_tools_run),
+    SHELL_SUBCMD_SET_END
+);
+
+SHELL_CMD_REGISTER(np, &sub_np, "Naughty Platypus lab commands", NULL);
 
 int main(void)
 {
     int err;
 
-    printk("{\"event\":\"boot\",\"name\":\"naughty-platypus\",\"mode\":\"passive-ble-observer\"}\n");
+#if defined(CONFIG_USB_DEVICE_STACK)
+    err = usb_enable(NULL);
+    if (err && err != -EALREADY) {
+        printk("{\"type\":\"error\",\"where\":\"usb_enable\",\"err\":%d}\n", err);
+    }
+#endif
+
+    printk("\n");
+    printk("Naughty Platypus Ubertooth-Style BLE Lab Suite\n");
+    printk("{\"type\":\"boot\",\"app\":\"naughty-platypus\",\"role\":\"passive_ble_lab_suite\"}\n");
 
     err = bt_enable(NULL);
     if (err) {
-        atomic_inc(&scan_errors);
-        printk("{\"event\":\"error\",\"stage\":\"bt_enable\",\"code\":%d}\n", err);
+        printk("{\"type\":\"error\",\"where\":\"bt_enable\",\"err\":%d}\n", err);
         return 0;
     }
 
-    printk("{\"event\":\"ready\",\"name\":\"naughty-platypus\",\"mode\":\"passive-ble-observer\"}\n");
+    bt_ready = true;
 
-    err = bt_le_scan_start(BT_LE_SCAN_PASSIVE, device_found);
-    if (err) {
-        atomic_inc(&scan_errors);
-        printk("{\"event\":\"error\",\"stage\":\"bt_le_scan_start\",\"code\":%d}\n", err);
-        return 0;
-    }
-
-    printk("{\"event\":\"scan\",\"state\":\"on\",\"kind\":\"passive\"}\n");
+    printk("{\"type\":\"status\",\"bluetooth\":\"ready\",\"hint\":\"run np tools_list or np scan_on\"}\n");
 
     while (1) {
-        k_sleep(K_SECONDS(10));
-        printk("{\"event\":\"stats\",\"ms\":%u,\"adv_seen\":%u,\"scan_errors\":%u}\n",
+        k_sleep(K_SECONDS(30));
+        printk("{\"type\":\"heartbeat\",\"uptime_ms\":%u,\"survey_running\":%s}\n",
                k_uptime_get_32(),
-               (unsigned int)atomic_get(&adv_seen),
-               (unsigned int)atomic_get(&scan_errors));
+               np_passive_survey_is_running() ? "true" : "false");
     }
 
     return 0;

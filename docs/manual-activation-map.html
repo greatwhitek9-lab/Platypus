@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Naughty Platypus Manual Activation Map</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.45; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    code, pre { background: #f4f4f4; padding: 0.15rem 0.3rem; border-radius: 4px; }
+    pre { padding: 1rem; overflow-x: auto; }
+    .purple { color: #7b2cbf; font-weight: 800; }
+    .box { border-left: 5px solid #7b2cbf; padding: 0.75rem 1rem; background: #faf5ff; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; vertical-align: top; }
+    th { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+<h1>Naughty Platypus Manual Activation Map</h1>
+
+<div class="box">
+  <strong>Purpose:</strong> Purple text marks the words/symbols a private lab developer would replace or alter later.
+  This public scaffold keeps restricted tools disabled and stub-only.
+</div>
+
+<h2>Do not change the HT-n5262 boot fixes</h2>
+
+<pre>
+Keep these values in the build script:
+<span class="purple">CONFIG_USE_DT_CODE_PARTITION=n</span>
+<span class="purple">CONFIG_FLASH_LOAD_OFFSET=0x1000</span>
+<span class="purple">CONFIG_FLASH_LOAD_SIZE=0xdf000</span>
+<span class="purple">UF2_FAMILY=0x239a0071</span>
+</pre>
+
+<p>
+These values are board-stitching requirements for the tested Heltec T114 / HT-n5262 UF2 bootloader.
+They are not feature activation knobs.
+</p>
+
+<h2>High-level conversion pattern</h2>
+
+<pre>
+<span class="purple">default n</span>  → private local build flag
+<span class="purple">enabled=false</span> → config-controlled enabled state
+<span class="purple">NP_STATUS_STUB_ONLY</span> → NP_STATUS_IMPLEMENTED
+<span class="purple">np_stub_*</span> → your private authorized implementation function
+<span class="purple">target_sources_ifdef(...)</span> → add private source file behind a Kconfig gate
+</pre>
+
+<h2>Tool-by-tool map</h2>
+
+<table>
+<tr>
+  <th>Tool</th>
+  <th>Kconfig symbol to alter in a private lab build</th>
+  <th>Registry fields to alter</th>
+  <th>Stub function to replace</th>
+</tr>
+<tr>
+  <td><code>ble_channel_survey</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_CHANNEL_SURVEY_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_channel_survey</span></td>
+  <td><span class="purple">np_stub_channel_survey</span></td>
+</tr>
+<tr>
+  <td><code>ble_connection_follow</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_BLE_CONNECTION_FOLLOW_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_ble_connection_follow</span></td>
+  <td><span class="purple">np_stub_ble_connection_follow</span></td>
+</tr>
+<tr>
+  <td><code>ble_gatt_mutation_lab</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_BLE_GATT_MUTATION_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_ble_gatt_mutation</span></td>
+  <td><span class="purple">np_stub_ble_gatt_mutation</span></td>
+</tr>
+<tr>
+  <td><code>ble_pairing_security_lab</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_BLE_PAIRING_LAB_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_ble_pairing_lab</span></td>
+  <td><span class="purple">np_stub_ble_pairing_lab</span></td>
+</tr>
+<tr>
+  <td><code>ble_advertising_tx_lab</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_BLE_ADV_TX_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_ble_adv_tx</span></td>
+  <td><span class="purple">np_stub_ble_adv_tx</span></td>
+</tr>
+<tr>
+  <td><code>ble_stability_stress_lab</code></td>
+  <td><span class="purple">CONFIG_NP_ENABLE_BLE_STABILITY_STRESS_PLACEHOLDER</span></td>
+  <td><span class="purple">NP_STATUS_STUB_ONLY</span>, <span class="purple">.run = np_stub_ble_stability_stress</span></td>
+  <td><span class="purple">np_stub_ble_stability_stress</span></td>
+</tr>
+</table>
+
+<h2>Example private-source stitch point</h2>
+
+<pre>
+target_sources_ifdef(<span class="purple">CONFIG_NP_ENABLE_MY_PRIVATE_AUTHORIZED_TOOL</span> app PRIVATE
+    <span class="purple">src/my_private_authorized_tool.c</span>
+)
+</pre>
+
+<h2>Registry stitch point</h2>
+
+<pre>
+.status = <span class="purple">NP_STATUS_IMPLEMENTED</span>,
+.enabled = IS_ENABLED(<span class="purple">CONFIG_NP_ENABLE_MY_PRIVATE_AUTHORIZED_TOOL</span>),
+.run = <span class="purple">np_my_private_authorized_tool</span>,
+</pre>
+
+</body>
+</html>
