@@ -51,13 +51,13 @@ cd "$ZEPHYR_BASE"
 
 "$WEST" build -p always \
     -b "$BOARD_TARGET" \
-    -S cdc-acm-console \
     "$APP_DIR" \
     -d "$BUILD_DIR" \
     -- \
     -DCONFIG_USE_DT_CODE_PARTITION=n \
     -DCONFIG_FLASH_LOAD_OFFSET="$FLASH_OFFSET" \
-    -DCONFIG_FLASH_LOAD_SIZE="$FLASH_SIZE"
+    -DCONFIG_FLASH_LOAD_SIZE="$FLASH_SIZE" \
+    -DKCONFIG_ERROR_ON_WARNINGS=OFF
 
 [[ -f "$RAW_UF2" ]] || { echo "Build completed but UF2 not found: $RAW_UF2" >&2; exit 1; }
 

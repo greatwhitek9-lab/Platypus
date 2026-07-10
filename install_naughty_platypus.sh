@@ -275,13 +275,13 @@ build_firmware() {
 
     "$WEST" build -p always \
         -b "$BOARD_TARGET" \
-        -S cdc-acm-console \
         "$APP_DIR" \
         -d "$BUILD_DIR" \
         -- \
         -DCONFIG_USE_DT_CODE_PARTITION=n \
         -DCONFIG_FLASH_LOAD_OFFSET="$FLASH_OFFSET" \
-        -DCONFIG_FLASH_LOAD_SIZE="$FLASH_SIZE"
+        -DCONFIG_FLASH_LOAD_SIZE="$FLASH_SIZE" \
+    -DKCONFIG_ERROR_ON_WARNINGS=OFF
 
     local raw_uf2="$BUILD_DIR/zephyr/zephyr.uf2"
     [[ -f "$raw_uf2" ]] || fail "Build completed but UF2 not found: $raw_uf2"

@@ -70,3 +70,5 @@ config NP_ENABLE_CLASSIC_BT_PLACEHOLDER
       Bluetooth Classic BR/EDR sniffer equivalent to Ubertooth.
 
 endmenu
+
+source "Kconfig.zephyr"

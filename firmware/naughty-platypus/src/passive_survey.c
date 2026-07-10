@@ -38,7 +38,7 @@ static int8_t weakest_rssi = 127;
 static const struct bt_le_scan_param np_scan_param = {
     .type = BT_LE_SCAN_TYPE_PASSIVE,
     .options = BT_LE_SCAN_OPT_NONE,
-    .interval = 0x0060,
+    .interval = 0x00A0,
     .window = 0x0030,
 };
 
@@ -139,86 +139,42 @@ static const char *phy_to_str(uint8_t phy)
 
 static void scan_recv(const struct bt_le_scan_recv_info *info, struct net_buf_simple *buf)
 {
-    struct parsed_ad parsed = {0};
-    char addr[BT_ADDR_LE_STR_LEN];
-    uint8_t ad_len = buf ? buf->len : 0U;
+    ARG_UNUSED(buf);
 
     adv_events++;
 
-    if (info->rssi > strongest_rssi) {
-        strongest_rssi = info->rssi;
+    if (info != NULL) {
+        if (info->rssi > strongest_rssi) {
+            strongest_rssi = info->rssi;
+        }
+
+        if (info->rssi < weakest_rssi) {
+            weakest_rssi = info->rssi;
+        }
     }
-
-    if (info->rssi < weakest_rssi) {
-        weakest_rssi = info->rssi;
-    }
-
-    if (buf != NULL) {
-        bt_data_parse(buf, parse_ad_cb, &parsed);
-    }
-
-    if (parsed.name[0] != '\0') {
-        named_events++;
-    }
-
-    if (parsed.mfg_hex[0] != '\0') {
-        mfg_events++;
-    }
-
-    if (parsed.svc16_hex[0] != '\0') {
-        svc_events++;
-    }
-
-    bt_addr_le_to_str(info->addr, addr, sizeof(addr));
-
-    printk("{\"type\":\"adv\","
-           "\"ts_ms\":%u,"
-           "\"addr\":\"%s\","
-           "\"rssi\":%d,"
-           "\"phy\":\"%s\","
-           "\"sid\":%u,"
-           "\"interval\":%u,"
-           "\"ad_len\":%u",
-           k_uptime_get_32(),
-           addr,
-           info->rssi,
-           phy_to_str(info->primary_phy),
-           info->sid,
-           info->interval,
-           ad_len);
-
-    if (parsed.has_flags) {
-        printk(",\"flags\":%u", parsed.flags);
-    }
-
-    if (parsed.has_tx_power) {
-        printk(",\"adv_tx_power\":%d", parsed.adv_tx_power);
-    }
-
-    if (parsed.name[0] != '\0') {
-        printk(",\"name\":\"%s\"", parsed.name);
-    }
-
-    if (parsed.mfg_hex[0] != '\0') {
-        printk(",\"mfg_hex\":\"%s\"", parsed.mfg_hex);
-    }
-
-    if (parsed.svc16_hex[0] != '\0') {
-        printk(",\"svc16_hex\":\"%s\"", parsed.svc16_hex);
-    }
-
-    printk("}\n");
 }
 
 static struct bt_le_scan_cb np_scan_callbacks = {
     .recv = scan_recv,
 };
 
+
+static void scan_recv_legacy(const bt_addr_le_t *addr,
+                             int8_t rssi,
+                             uint8_t adv_type,
+                             struct net_buf_simple *buf)
+{
+    static uint32_t legacy_count;
+
+    ARG_UNUSED(addr);
+}
+
 int np_passive_survey_start(void)
 {
     int err;
 
     if (!scan_cb_registered) {
+        printk("{\"type\":\"scan_diag\",\"step\":\"register_cb\"}\n");
         bt_le_scan_cb_register(&np_scan_callbacks);
         scan_cb_registered = true;
     }
@@ -227,6 +183,8 @@ int np_passive_survey_start(void)
         return 0;
     }
 
+    printk("{\"type\":\"scan_diag\",\"step\":\"start\",\"scan_type\":%u,\"interval\":%u,\"window\":%u}\n",
+           np_scan_param.type, np_scan_param.interval, np_scan_param.window);
     err = bt_le_scan_start(&np_scan_param, NULL);
     if (err == 0) {
         survey_running = true;

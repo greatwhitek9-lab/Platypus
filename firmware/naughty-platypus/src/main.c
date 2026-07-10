@@ -1,3 +1,6 @@
+#include <zephyr/drivers/uart.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/device.h>
 #include <errno.h>
 #include <stdio.h>
 
@@ -123,9 +126,49 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_np,
 
 SHELL_CMD_REGISTER(np, &sub_np, "Naughty Platypus lab commands", NULL);
 
+
+static void np_cdc_write(const char *s)
+{
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(board_cdc_acm_uart), okay)
+    const struct device *dev = DEVICE_DT_GET(DT_NODELABEL(board_cdc_acm_uart));
+
+    if (!device_is_ready(dev) || s == NULL) {
+        return;
+    }
+
+#if defined(CONFIG_UART_LINE_CTRL)
+    uint32_t dtr = 0;
+
+    for (int i = 0; i < 40; i++) {
+        if (uart_line_ctrl_get(dev, UART_LINE_CTRL_DTR, &dtr) == 0 && dtr) {
+            break;
+        }
+        k_sleep(K_MSEC(50));
+    }
+#endif
+
+    while (*s) {
+        uart_poll_out(dev, (unsigned char)*s++);
+    }
+#else
+    ARG_UNUSED(s);
+#endif
+}
+
+static void np_cdc_write_u32(const char *prefix, uint32_t value, const char *suffix)
+{
+    char buf[128];
+
+    snprintk(buf, sizeof(buf), "%s%u%s", prefix, value, suffix);
+    np_cdc_write(buf);
+}
+
 int main(void)
 {
+    np_cdc_write("\r\n{\"type\":\"serial_boot\",\"app\":\"naughty-platypus\",\"path\":\"direct_cdc\"}\r\n");
+    np_cdc_write("{\"type\":\"firmware_marker\",\"build\":\"ble_survey_stable_v1\"}\r\n");
     int err;
+
 
 #if defined(CONFIG_USB_DEVICE_STACK)
     err = usb_enable(NULL);
@@ -148,8 +191,22 @@ int main(void)
 
     printk("{\"type\":\"status\",\"bluetooth\":\"ready\",\"hint\":\"run np tools_list or np scan_on\"}\n");
 
+    int scan_err = np_passive_survey_start();
+    np_cdc_write_u32("{\"path\":\"direct_cdc\",\"type\":\"scan_start\",\"err\":", scan_err, "}\r\n");
+
+    /* auto_survey_status_loop: print counters without needing shell RX */
     while (1) {
-        k_sleep(K_SECONDS(30));
+        k_sleep(K_SECONDS(10));
+        np_passive_survey_status();
+    }
+    char scan_msg[128];
+    snprintk(scan_msg, sizeof(scan_msg),
+             "{\"path\":\"direct_cdc\",\"type\":\"scan_start\",\"err\":%d}\r\n",
+             scan_err);
+    np_cdc_write(scan_msg);
+
+    while (1) {
+        k_sleep(K_SECONDS(2));
         printk("{\"type\":\"heartbeat\",\"uptime_ms\":%u,\"survey_running\":%s}\n",
                k_uptime_get_32(),
                np_passive_survey_is_running() ? "true" : "false");
