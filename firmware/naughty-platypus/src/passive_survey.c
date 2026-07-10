@@ -15,6 +15,8 @@
 #define HEX_PREVIEW_BYTES 24
 #define NAME_MAX_LEN      48
 #define HEX_MAX_LEN       ((HEX_PREVIEW_BYTES * 2) + 1)
+#define NP_ADV_DATA_MAX   31
+#define NP_ADV_QUEUE_LEN  128
 
 struct parsed_ad {
     char name[NAME_MAX_LEN];
@@ -26,21 +28,17 @@ struct parsed_ad {
     int8_t adv_tx_power;
 };
 
-static bool survey_running;
-static bool scan_cb_registered;
-static uint32_t adv_events;
-
-#define NP_ADV_QUEUE_LEN 128
-
 struct np_adv_record {
     bt_addr_le_t addr;
     int8_t rssi;
     uint8_t adv_type;
     uint8_t data_len;
+    uint8_t data[NP_ADV_DATA_MAX];
 };
 
-K_MSGQ_DEFINE(np_adv_msgq, sizeof(struct np_adv_record), NP_ADV_QUEUE_LEN, 4);
-
+static bool survey_running;
+static bool scan_cb_registered;
+static uint32_t adv_events;
 static uint32_t queued_events;
 static uint32_t dropped_events;
 static uint32_t drained_events;
@@ -50,12 +48,16 @@ static uint32_t svc_events;
 static int8_t strongest_rssi = -127;
 static int8_t weakest_rssi = 127;
 
-static const struct bt_le_scan_param np_scan_param = {
-    .type = BT_LE_SCAN_TYPE_PASSIVE,
+K_MSGQ_DEFINE(np_adv_msgq, sizeof(struct np_adv_record), NP_ADV_QUEUE_LEN, 4);
+
+static struct bt_le_scan_param np_scan_param = {
+    .type = BT_LE_SCAN_TYPE_ACTIVE,
     .options = BT_LE_SCAN_OPT_NONE,
     .interval = 0x00A0,
     .window = 0x0030,
 };
+
+static bool scan_active_mode = true;
 
 static void safe_copy_name(char *dst, size_t dst_len, const uint8_t *src, uint8_t src_len)
 {
@@ -90,65 +92,69 @@ static void hex_preview(char *dst, size_t dst_len, const uint8_t *src, uint8_t s
     dst[out] = '\0';
 }
 
-static bool parse_ad_cb(struct bt_data *data, void *user_data)
+static void parse_ad_payload(const uint8_t *payload, uint8_t payload_len, struct parsed_ad *parsed)
 {
-    struct parsed_ad *parsed = user_data;
+    uint8_t pos = 0U;
 
-    switch (data->type) {
-    case BT_DATA_FLAGS:
-        if (data->data_len >= 1) {
-            parsed->flags = data->data[0];
-            parsed->has_flags = true;
-        }
-        break;
-
-    case BT_DATA_NAME_SHORTENED:
-    case BT_DATA_NAME_COMPLETE:
-        if (parsed->name[0] == '\0' || data->type == BT_DATA_NAME_COMPLETE) {
-            safe_copy_name(parsed->name, sizeof(parsed->name),
-                           data->data, data->data_len);
-        }
-        break;
-
-    case BT_DATA_TX_POWER:
-        if (data->data_len >= 1) {
-            parsed->adv_tx_power = (int8_t)data->data[0];
-            parsed->has_tx_power = true;
-        }
-        break;
-
-    case BT_DATA_MANUFACTURER_DATA:
-        if (parsed->mfg_hex[0] == '\0') {
-            hex_preview(parsed->mfg_hex, sizeof(parsed->mfg_hex),
-                        data->data, data->data_len);
-        }
-        break;
-
-    case BT_DATA_SVC_DATA16:
-        if (parsed->svc16_hex[0] == '\0') {
-            hex_preview(parsed->svc16_hex, sizeof(parsed->svc16_hex),
-                        data->data, data->data_len);
-        }
-        break;
-
-    default:
-        break;
+    if (payload == NULL || parsed == NULL) {
+        return;
     }
 
-    return true;
-}
+    while (pos < payload_len) {
+        uint8_t field_len = payload[pos++];
 
-static const char *phy_to_str(uint8_t phy)
-{
-    switch (phy) {
-    case BT_GAP_LE_PHY_1M:
-        return "1M";
-    case BT_GAP_LE_PHY_2M:
-        return "2M";
-    case BT_GAP_LE_PHY_CODED:
-        return "CODED";
-    default:
-        return "unknown";
+        if (field_len == 0U) {
+            break;
+        }
+
+        if ((uint16_t)pos + field_len > payload_len) {
+            break;
+        }
+
+        uint8_t ad_type = payload[pos];
+        uint8_t value_len = field_len - 1U;
+        const uint8_t *value = &payload[pos + 1U];
+
+        switch (ad_type) {
+        case BT_DATA_FLAGS:
+            if (value_len >= 1U) {
+                parsed->flags = value[0];
+                parsed->has_flags = true;
+            }
+            break;
+
+        case BT_DATA_NAME_SHORTENED:
+        case BT_DATA_NAME_COMPLETE:
+            if (value_len > 0U &&
+                (parsed->name[0] == '\0' || ad_type == BT_DATA_NAME_COMPLETE)) {
+                safe_copy_name(parsed->name, sizeof(parsed->name), value, value_len);
+            }
+            break;
+
+        case BT_DATA_TX_POWER:
+            if (value_len >= 1U) {
+                parsed->adv_tx_power = (int8_t)value[0];
+                parsed->has_tx_power = true;
+            }
+            break;
+
+        case BT_DATA_MANUFACTURER_DATA:
+            if (value_len > 0U && parsed->mfg_hex[0] == '\0') {
+                hex_preview(parsed->mfg_hex, sizeof(parsed->mfg_hex), value, value_len);
+            }
+            break;
+
+        case BT_DATA_SVC_DATA16:
+            if (value_len > 0U && parsed->svc16_hex[0] == '\0') {
+                hex_preview(parsed->svc16_hex, sizeof(parsed->svc16_hex), value, value_len);
+            }
+            break;
+
+        default:
+            break;
+        }
+
+        pos += field_len;
     }
 }
 
@@ -165,7 +171,11 @@ static void scan_recv(const struct bt_le_scan_recv_info *info, struct net_buf_si
     rec.addr = *info->addr;
     rec.rssi = info->rssi;
     rec.adv_type = info->adv_type;
-    rec.data_len = buf ? (buf->len > 255U ? 255U : (uint8_t)buf->len) : 0U;
+    rec.data_len = buf ? MIN((uint8_t)buf->len, (uint8_t)NP_ADV_DATA_MAX) : 0U;
+
+    if (buf != NULL && rec.data_len > 0U) {
+        memcpy(rec.data, buf->data, rec.data_len);
+    }
 
     if (info->rssi > strongest_rssi) {
         strongest_rssi = info->rssi;
@@ -186,17 +196,6 @@ static struct bt_le_scan_cb np_scan_callbacks = {
     .recv = scan_recv,
 };
 
-
-static void scan_recv_legacy(const bt_addr_le_t *addr,
-                             int8_t rssi,
-                             uint8_t adv_type,
-                             struct net_buf_simple *buf)
-{
-    static uint32_t legacy_count;
-
-    ARG_UNUSED(addr);
-}
-
 int np_passive_survey_start(void)
 {
     int err;
@@ -211,12 +210,17 @@ int np_passive_survey_start(void)
         return 0;
     }
 
-    printk("{\"type\":\"scan_diag\",\"step\":\"start\",\"scan_type\":%u,\"interval\":%u,\"window\":%u}\n",
-           np_scan_param.type, np_scan_param.interval, np_scan_param.window);
+    printk("{\"type\":\"scan_diag\",\"step\":\"start\",\"scan_type\":%u,\"mode\":\"%s\",\"interval\":%u,\"window\":%u}\n",
+           np_scan_param.type,
+           scan_active_mode ? "active" : "passive",
+           np_scan_param.interval,
+           np_scan_param.window);
+
     err = bt_le_scan_start(&np_scan_param, NULL);
     if (err == 0) {
         survey_running = true;
-        printk("{\"type\":\"status\",\"tool\":\"ble_passive_survey\",\"scan\":\"on\"}\n");
+        printk("{\"type\":\"status\",\"tool\":\"ble_survey\",\"scan\":\"on\",\"mode\":\"%s\"}\n",
+               scan_active_mode ? "active" : "passive");
     }
 
     return err;
@@ -233,12 +237,74 @@ int np_passive_survey_stop(void)
     err = bt_le_scan_stop();
     if (err == 0) {
         survey_running = false;
-        printk("{\"type\":\"status\",\"tool\":\"ble_passive_survey\",\"scan\":\"off\"}\n");
+        printk("{\"type\":\"status\",\"tool\":\"ble_survey\",\"scan\":\"off\",\"mode\":\"%s\"}\n",
+               scan_active_mode ? "active" : "passive");
     }
 
     return err;
 }
 
+int np_passive_survey_set_active(void)
+{
+    bool restart = survey_running;
+    int err = 0;
+
+    if (restart) {
+        err = np_passive_survey_stop();
+        if (err) {
+            return err;
+        }
+    }
+
+    np_scan_param.type = BT_LE_SCAN_TYPE_ACTIVE;
+    scan_active_mode = true;
+
+    printk("{\"type\":\"scan_mode\",\"mode\":\"active\",\"default\":true,\"interval\":%u,\"window\":%u}\n",
+           np_scan_param.interval,
+           np_scan_param.window);
+
+    if (restart) {
+        err = np_passive_survey_start();
+    }
+
+    return err;
+}
+
+int np_passive_survey_set_passive(void)
+{
+    bool restart = survey_running;
+    int err = 0;
+
+    if (restart) {
+        err = np_passive_survey_stop();
+        if (err) {
+            return err;
+        }
+    }
+
+    np_scan_param.type = BT_LE_SCAN_TYPE_PASSIVE;
+    scan_active_mode = false;
+
+    printk("{\"type\":\"scan_mode\",\"mode\":\"passive\",\"default\":false,\"interval\":%u,\"window\":%u}\n",
+           np_scan_param.interval,
+           np_scan_param.window);
+
+    if (restart) {
+        err = np_passive_survey_start();
+    }
+
+    return err;
+}
+
+int np_passive_survey_mode_status(void)
+{
+    printk("{\"type\":\"scan_mode\",\"mode\":\"%s\",\"interval\":%u,\"window\":%u,\"scanning\":%s}\n",
+           scan_active_mode ? "active" : "passive",
+           np_scan_param.interval,
+           np_scan_param.window,
+           survey_running ? "true" : "false");
+    return 0;
+}
 
 int np_passive_survey_drain(void)
 {
@@ -247,20 +313,40 @@ int np_passive_survey_drain(void)
     uint32_t drained_now = 0U;
 
     while (k_msgq_get(&np_adv_msgq, &rec, K_NO_WAIT) == 0) {
+        struct parsed_ad parsed = {0};
+
         bt_addr_le_to_str(&rec.addr, addr, sizeof(addr));
+        parse_ad_payload(rec.data, rec.data_len, &parsed);
+
+        if (parsed.name[0] != '\0') {
+            named_events++;
+        }
+        if (parsed.mfg_hex[0] != '\0') {
+            mfg_events++;
+        }
+        if (parsed.svc16_hex[0] != '\0') {
+            svc_events++;
+        }
+
         drained_events++;
         drained_now++;
 
-        printk("{\"type\":\"adv_summary\","
-               "\"addr\":\"%s\","
-               "\"rssi\":%d,"
-               "\"adv_type\":%u,"
-               "\"data_len\":%u,"
+        printk("{\"type\":\"adv_summary\"," 
+               "\"addr\":\"%s\"," 
+               "\"name\":\"%s\"," 
+               "\"rssi\":%d," 
+               "\"adv_type\":%u," 
+               "\"data_len\":%u," 
+               "\"mfg\":\"%s\"," 
+               "\"svc16\":\"%s\"," 
                "\"drained_events\":%u}\n",
                addr,
+               parsed.name,
                rec.rssi,
                rec.adv_type,
                rec.data_len,
+               parsed.mfg_hex,
+               parsed.svc16_hex,
                drained_events);
 
         /* Keep serial output bounded so BLE/USB stays stable. */
@@ -274,15 +360,17 @@ int np_passive_survey_drain(void)
 
 int np_passive_survey_status(void)
 {
-    printk("{\"type\":\"survey_status\","
-           "\"scanning\":%s,"
-           "\"adv_events\":%u,"
-           "\"named_events\":%u,"
-           "\"mfg_events\":%u,"
-           "\"svc_events\":%u,"
-           "\"strongest_rssi\":%d,"
+    printk("{\"type\":\"survey_status\"," 
+           "\"scanning\":%s," 
+           "\"scan_mode\":\"%s\"," 
+           "\"adv_events\":%u," 
+           "\"named_events\":%u," 
+           "\"mfg_events\":%u," 
+           "\"svc_events\":%u," 
+           "\"strongest_rssi\":%d," 
            "\"weakest_rssi\":%d}\n",
            survey_running ? "true" : "false",
+           scan_active_mode ? "active" : "passive",
            adv_events,
            named_events,
            mfg_events,
@@ -290,10 +378,10 @@ int np_passive_survey_status(void)
            strongest_rssi,
            weakest_rssi);
 
-    printk("{\"type\":\"queue_status\","
-           "\"queued_events\":%u,"
-           "\"dropped_events\":%u,"
-           "\"drained_events\":%u,"
+    printk("{\"type\":\"queue_status\"," 
+           "\"queued_events\":%u," 
+           "\"dropped_events\":%u," 
+           "\"drained_events\":%u," 
            "\"pending\":%u}\n",
            queued_events,
            dropped_events,
@@ -316,7 +404,8 @@ int np_passive_survey_reset(void)
     strongest_rssi = -127;
     weakest_rssi = 127;
 
-    printk("{\"type\":\"status\",\"tool\":\"ble_passive_survey\",\"stats\":\"reset\"}\n");
+    printk("{\"type\":\"status\",\"tool\":\"ble_survey\",\"stats\":\"reset\",\"mode\":\"%s\"}\n",
+           scan_active_mode ? "active" : "passive");
     return 0;
 }
 
