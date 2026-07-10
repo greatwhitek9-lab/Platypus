@@ -2,6 +2,11 @@
 build/
 *.log
 
+# Generated firmware/test artifacts
+captures/
+releases/*.uf2
+*.parrotbak
+
 # Python cache
 __pycache__/
 *.pyc
