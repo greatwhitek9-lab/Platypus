@@ -1,5 +1,3 @@
-int np_passive_survey_drain(void);
-
 #include <zephyr/drivers/uart.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/device.h>
@@ -18,6 +16,8 @@ int np_passive_survey_drain(void);
 #include "passive_survey.h"
 #include "tool_registry.h"
 
+#define NP_FIRMWARE_BUILD "ble_active_default_v5"
+
 static bool bt_ready;
 
 static int cmd_scan_on(const struct shell *sh, size_t argc, char **argv)
@@ -32,7 +32,7 @@ static int cmd_scan_on(const struct shell *sh, size_t argc, char **argv)
         return err;
     }
 
-    shell_print(sh, "passive BLE survey started");
+    shell_print(sh, "BLE survey started");
     return 0;
 }
 
@@ -48,7 +48,7 @@ static int cmd_scan_off(const struct shell *sh, size_t argc, char **argv)
         return err;
     }
 
-    shell_print(sh, "passive BLE survey stopped");
+    shell_print(sh, "BLE survey stopped");
     return 0;
 }
 
@@ -117,8 +117,8 @@ static int cmd_tools_run(const struct shell *sh, size_t argc, char **argv)
 }
 
 SHELL_STATIC_SUBCMD_SET_CREATE(sub_np,
-    SHELL_CMD(scan_on, NULL, "Start passive BLE advertisement survey", cmd_scan_on),
-    SHELL_CMD(scan_off, NULL, "Stop passive BLE advertisement survey", cmd_scan_off),
+    SHELL_CMD(scan_on, NULL, "Start BLE advertisement survey", cmd_scan_on),
+    SHELL_CMD(scan_off, NULL, "Stop BLE advertisement survey", cmd_scan_off),
     SHELL_CMD(status, NULL, "Show survey status and counters", cmd_status),
     SHELL_CMD(reset_stats, NULL, "Reset survey counters", cmd_reset_stats),
     SHELL_CMD(tools_list, NULL, "List safe and restricted tool registry", cmd_tools_list),
@@ -127,7 +127,6 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_np,
 );
 
 SHELL_CMD_REGISTER(np, &sub_np, "Naughty Platypus lab commands", NULL);
-
 
 static void np_cdc_write(const char *s)
 {
@@ -165,13 +164,12 @@ static void np_cdc_write_u32(const char *prefix, uint32_t value, const char *suf
     np_cdc_write(buf);
 }
 
-
 static int cmd_np_version_oneword(const struct shell *sh, size_t argc, char **argv)
 {
     ARG_UNUSED(argc);
     ARG_UNUSED(argv);
 
-    shell_print(sh, "{\"type\":\"version\",\"app\":\"naughty-platypus\",\"build\":\"oneword_cmds_v1\",\"mode\":\"passive_ble_survey\"}");
+    shell_print(sh, "{\"type\":\"version\",\"app\":\"naughty-platypus\",\"build\":\"%s\",\"mode\":\"active_ble_survey\"}", NP_FIRMWARE_BUILD);
     return 0;
 }
 
@@ -221,6 +219,33 @@ static int cmd_np_reset_oneword(const struct shell *sh, size_t argc, char **argv
     return np_passive_survey_reset();
 }
 
+static int cmd_np_active_oneword(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(sh);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    return np_passive_survey_set_active();
+}
+
+static int cmd_np_passive_oneword(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(sh);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    return np_passive_survey_set_passive();
+}
+
+static int cmd_np_mode_oneword(const struct shell *sh, size_t argc, char **argv)
+{
+    ARG_UNUSED(sh);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
+
+    return np_passive_survey_mode_status();
+}
+
 static int cmd_np_commands_oneword(const struct shell *sh, size_t argc, char **argv)
 {
     ARG_UNUSED(argc);
@@ -233,24 +258,28 @@ static int cmd_np_commands_oneword(const struct shell *sh, size_t argc, char **a
     shell_print(sh, "stop");
     shell_print(sh, "reset");
     shell_print(sh, "commands");
+    shell_print(sh, "active");
+    shell_print(sh, "passive");
+    shell_print(sh, "mode");
     return 0;
 }
 
 SHELL_CMD_REGISTER(version, NULL, "Show Naughty Platypus firmware version.", cmd_np_version_oneword);
 SHELL_CMD_REGISTER(status, NULL, "Show BLE survey counters.", cmd_np_status_oneword);
 SHELL_CMD_REGISTER(survey, NULL, "Drain BLE queue and show counters.", cmd_np_survey_oneword);
-SHELL_CMD_REGISTER(scan, NULL, "Start passive BLE survey.", cmd_np_scan_oneword);
-SHELL_CMD_REGISTER(stop, NULL, "Stop passive BLE survey.", cmd_np_stop_oneword);
+SHELL_CMD_REGISTER(scan, NULL, "Start BLE survey.", cmd_np_scan_oneword);
+SHELL_CMD_REGISTER(stop, NULL, "Stop BLE survey.", cmd_np_stop_oneword);
 SHELL_CMD_REGISTER(reset, NULL, "Reset BLE survey counters.", cmd_np_reset_oneword);
 SHELL_CMD_REGISTER(commands, NULL, "List one-word Naughty Platypus commands.", cmd_np_commands_oneword);
-
+SHELL_CMD_REGISTER(active, NULL, "Use active BLE scan mode for scan-response names.", cmd_np_active_oneword);
+SHELL_CMD_REGISTER(passive, NULL, "Use passive BLE scan mode.", cmd_np_passive_oneword);
+SHELL_CMD_REGISTER(mode, NULL, "Show active/passive scan mode.", cmd_np_mode_oneword);
 
 int main(void)
 {
     np_cdc_write("\r\n{\"type\":\"serial_boot\",\"app\":\"naughty-platypus\",\"path\":\"direct_cdc\"}\r\n");
-    np_cdc_write("{\"type\":\"firmware_marker\",\"build\":\"oneword_cmds_v1\"}\r\n");
+    np_cdc_write("{\"type\":\"firmware_marker\",\"build\":\"" NP_FIRMWARE_BUILD "\"}\r\n");
     int err;
-
 
 #if defined(CONFIG_USB_DEVICE_STACK)
     err = usb_enable(NULL);
@@ -261,7 +290,7 @@ int main(void)
 
     printk("\n");
     printk("Naughty Platypus Ubertooth-Style BLE Lab Suite\n");
-    printk("{\"type\":\"boot\",\"app\":\"naughty-platypus\",\"role\":\"passive_ble_lab_suite\"}\n");
+    printk("{\"type\":\"boot\",\"app\":\"naughty-platypus\",\"role\":\"active_ble_lab_suite\"}\n");
 
     err = bt_enable(NULL);
     if (err) {
@@ -271,7 +300,7 @@ int main(void)
 
     bt_ready = true;
 
-    printk("{\"type\":\"status\",\"bluetooth\":\"ready\",\"hint\":\"run np tools_list or np scan_on\"}\n");
+    printk("{\"type\":\"status\",\"bluetooth\":\"ready\",\"hint\":\"run commands, mode, status, or survey\"}\n");
 
     int scan_err = np_passive_survey_start();
     np_cdc_write_u32("{\"path\":\"direct_cdc\",\"type\":\"scan_start\",\"err\":", scan_err, "}\r\n");
@@ -281,18 +310,6 @@ int main(void)
         k_sleep(K_SECONDS(3));
         np_passive_survey_drain();
         np_passive_survey_status();
-    }
-    char scan_msg[128];
-    snprintk(scan_msg, sizeof(scan_msg),
-             "{\"path\":\"direct_cdc\",\"type\":\"scan_start\",\"err\":%d}\r\n",
-             scan_err);
-    np_cdc_write(scan_msg);
-
-    while (1) {
-        k_sleep(K_SECONDS(2));
-        printk("{\"type\":\"heartbeat\",\"uptime_ms\":%u,\"survey_running\":%s}\n",
-               k_uptime_get_32(),
-               np_passive_survey_is_running() ? "true" : "false");
     }
 
     return 0;
