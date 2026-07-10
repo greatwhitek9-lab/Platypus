@@ -5,69 +5,56 @@
 <h1 align="center">Naughty Platypus</h1>
 
 <p align="center">
-  <strong>An Ubertooth-inspired Bluetooth Low Energy survey firmware for the Heltec T114 / HT-n5262.</strong>
+  <strong>An Ubertooth-inspired Bluetooth Low Energy survey platform for the Heltec T114 / HT-n5262.</strong>
 </p>
 
 <p align="center">
-  Active scanning by default · Passive mode available · Queue-based processing · Structured JSON output · One-word commands
+  Active scanning by default · Passive mode available · JSON streaming · Kali/Parrot host console · CSV/SQLite/GPS
 </p>
 
 > [!IMPORTANT]
-> Naughty Platypus is intended for authorized Bluetooth Low Energy discovery, asset inventory, troubleshooting, education, and defensive laboratory research. It is not a jammer, denial-of-service tool, packet injector, key-recovery platform, or full Ubertooth One replacement.
+> Naughty Platypus is intended for authorized BLE discovery, asset inventory, troubleshooting, education, and defensive laboratory research. It does not implement jamming, forced disconnects, packet injection, key recovery, credential attacks, or denial-of-service functionality.
 
 ---
 
 ## What is Naughty Platypus?
 
-Naughty Platypus is the specialized BLE survey branch of the Platypus project. It turns the **Heltec T114 / HT-n5262 nRF52840** into a USB-connected BLE discovery and telemetry device running Zephyr RTOS.
+Naughty Platypus is the dedicated BLE-survey branch of the Platypus project. It turns the **Heltec T114 / HT-n5262 nRF52840** into a USB-connected BLE discovery sensor running Zephyr RTOS.
 
-Instead of appearing to Linux as a normal BlueZ HCI controller, Naughty Platypus runs its own firmware-side scanning engine and streams structured survey records over USB CDC serial.
+The firmware performs scanning on the board and streams newline-delimited JSON over USB CDC serial. The accompanying Kali/Parrot host application adds:
 
-Current capabilities include:
-
-- Active BLE scanning by default, including scan-response discovery when supported by nearby devices.
-- Optional passive scanning.
-- MAC/address, address type, RSSI, advertisement type, payload length, local-name, manufacturer-data, and 16-bit service-data summaries.
-- Queue-based event processing that keeps the Bluetooth receive callback small and stable.
-- Continuous JSON-line output suitable for terminal viewing, log capture, scripts, and future dashboards.
-- One-word firmware commands such as `scan`, `stop`, `active`, `passive`, `mode`, and `status`.
-- HT-n5262 UF2 offset and family-ID corrections required by the tested board bootloader.
+- Per-device caching and duplicate suppression
+- Strongest-device and recently-seen views
+- Advertising interval estimation
+- Manufacturer ID lookup
+- iBeacon, Eddystone, AltBeacon, and Fast Pair parsing
+- JSONL, inventory CSV, observation CSV, and SQLite export
+- Interactive curses terminal UI
+- GPSD or static-coordinate tagging
+- Database-backed survey sessions
+- Optional advertising-channel counters when a controller event exposes a channel index
 
 ---
 
 ## Platypus vs. Naughty Platypus
 
-The regular **Platypus** firmware and **Naughty Platypus** target different workflows.
-
-| Capability | Platypus | Naughty Platypus |
+| Capability | Regular Platypus | Naughty Platypus |
 |---|---|---|
-| Primary role | USB BLE HCI adapter | Standalone BLE survey firmware |
+| Primary role | Linux USB BLE HCI adapter | Standalone BLE survey sensor |
 | Linux interface | BlueZ HCI controller such as `hci1` | USB CDC serial such as `/dev/ttyACM0` |
-| Main processing location | Linux/BlueZ host | Heltec firmware plus optional host scripts |
-| Typical tools | `bluetoothctl`, `btmgmt`, `btmon` | Serial terminal, JSONL logging, host parser |
-| Active scan default | Controlled by host application | Yes |
-| Passive scan option | Controlled by host application | Yes, one-word command |
-| Firmware-side advertisement parser | No | Yes |
-| Queue-based survey engine | No | Yes |
-| Device name and address summaries | Through BlueZ tools | Direct JSON output |
-| Manufacturer/service summaries | Through host tools | Direct JSON fields |
-| One-word firmware commands | No | Yes |
-| Best use | General Linux BLE adapter | Dedicated BLE observation and inventory |
+| Main control plane | BlueZ on Linux | Firmware commands plus host console |
+| Typical tools | `bluetoothctl`, `btmgmt`, `btmon` | `naughty_platypus_host.py`, serial terminal |
+| Active scan default | Host controlled | Yes |
+| Passive scan option | Host controlled | Yes |
+| Firmware JSON stream | No | Yes |
+| Host device cache | BlueZ/application dependent | Included |
+| Beacon protocol parsing | External tools | Included |
+| CSV/SQLite/GPS sessions | External tools | Included |
 | Full Ubertooth raw-radio replacement | No | No |
 
-### Choose regular Platypus when
+Choose **regular Platypus** when you want the Heltec to appear as a normal BlueZ controller.
 
-- You want the Heltec board to appear as a normal Linux Bluetooth controller.
-- You want BlueZ applications to directly control scanning and connections.
-- You primarily use `bluetoothctl`, `btmgmt`, `btmon`, or another HCI-based application.
-
-### Choose Naughty Platypus when
-
-- You want the board to continuously survey nearby BLE advertisements itself.
-- You want structured JSON output over serial.
-- You want a lightweight dedicated BLE inventory sensor.
-- You want active and passive scan modes controlled by simple firmware commands.
-- You want to build host-side logging, dashboards, device caches, or GPS-tagged survey workflows.
+Choose **Naughty Platypus** when you want a dedicated BLE observation sensor with structured output and survey-session tooling.
 
 ---
 
@@ -78,17 +65,16 @@ The regular **Platypus** firmware and **Naughty Platypus** target different work
 | Board | Heltec T114 / HT-n5262 |
 | MCU | Nordic nRF52840 |
 | RTOS | Zephyr |
-| Bootloader | HT-n5262 UF2 bootloader |
-| UF2 boot mode | Double-tap `RST` |
 | Runtime USB interface | CDC ACM serial |
 | Typical runtime device | `/dev/ttyACM0` |
+| UF2 bootloader label | `HT-n5262` |
 | Build target | `heltec_t114_v2/nrf52840/uf2` |
 | Application offset | `0x1000` |
 | Application size | `0xdf000` |
 | UF2 family | `0x239a0071` |
-| Tested host families | Kali Linux, Parrot OS, Debian-derived Linux |
+| Tested hosts | Kali Linux, Parrot OS, Debian-derived Linux |
 
-Expected release file:
+Expected release artifact:
 
 ```text
 releases/naughty-platypus-HT-n5262-offset1000.uf2
@@ -96,7 +82,7 @@ releases/naughty-platypus-HT-n5262-offset1000.uf2
 
 ---
 
-## Firmware architecture
+## Architecture
 
 ```text
 Nearby BLE advertisements and scan responses
@@ -106,35 +92,37 @@ Nearby BLE advertisements and scan responses
                     │
                     ▼
           Zephyr BLE scan callback
-          address + RSSI + small
-          bounded payload copy only
+          small bounded record only
                     │
                     ▼
              Message queue
                     │
                     ▼
-        Main-loop advertisement parser
-          name / manufacturer / service
+       Firmware advertisement parser
                     │
                     ▼
-         Structured JSON-line output
+        JSONL over USB CDC serial
                     │
                     ▼
-             USB CDC serial
-                    │
-                    ▼
-         Kali / Parrot host terminal
+       Kali / Parrot host collector
+         ├─ device cache
+         ├─ duplicate suppression
+         ├─ interval estimation
+         ├─ beacon decoders
+         ├─ manufacturer lookup
+         ├─ TUI
+         ├─ CSV / JSONL
+         ├─ SQLite sessions
+         └─ GPS tagging
 ```
 
-The Bluetooth callback deliberately avoids expensive parsing and printing. It copies a bounded record into a message queue and returns quickly. Parsing and serial output happen later in the main loop, which prevents the scanner from freezing under moderate advertisement traffic.
+The Bluetooth callback remains deliberately lightweight. Expensive parsing, caching, export, database operations, and terminal rendering run on the Linux host.
 
 ---
 
-# Kali Linux and Parrot OS quick start
+# Kali Linux and Parrot OS setup
 
-The same commands work on both Kali Linux and Parrot OS unless otherwise noted.
-
-## 1. Install host dependencies
+## 1. Install dependencies
 
 ```bash
 sudo apt update
@@ -142,25 +130,20 @@ sudo apt install -y \
   git python3 python3-venv python3-pip \
   cmake ninja-build gperf ccache \
   device-tree-compiler wget curl xz-utils file \
-  make gcc g++ usbutils util-linux screen minicom
+  make gcc g++ usbutils util-linux screen minicom \
+  gpsd gpsd-clients
 ```
 
-For a full local Zephyr build, you also need a working Zephyr workspace and `west`. The existing project defaults are:
-
-```text
-ZEPHYR_BASE=$HOME/ble-dongle-build/zephyrproject/zephyr
-WEST=$HOME/ble-dongle-build/.venv/bin/west
-```
-
-## 2. Clone the Naughty Platypus branch
+Clone the branch:
 
 ```bash
 git clone --branch naughty-platypus --single-branch \
   https://github.com/greatwhitek9-lab/Platypus.git
+
 cd Platypus
 ```
 
-If the repository already exists locally:
+For an existing clone:
 
 ```bash
 cd ~/Desktop/Platypus
@@ -169,47 +152,58 @@ git switch naughty-platypus
 git pull --rebase origin naughty-platypus
 ```
 
-## 3. Make project scripts executable
+## 2. Set up the host Python environment
+
+```bash
+cd ~/Desktop/Platypus
+python3 -m venv .venv-naughty
+source .venv-naughty/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r tools/requirements-naughty-platypus.txt
+```
+
+Or use the setup script:
+
+```bash
+chmod +x scripts/setup_naughty_host.sh
+./scripts/setup_naughty_host.sh
+source .venv-naughty/bin/activate
+```
+
+## 3. Fix serial permissions
+
+```bash
+sudo usermod -aG dialout "$USER"
+```
+
+Log out and back in before relying on the new group membership.
+
+---
+
+# Build and flash
+
+The project expects:
+
+```text
+ZEPHYR_BASE=$HOME/ble-dongle-build/zephyrproject/zephyr
+WEST=$HOME/ble-dongle-build/.venv/bin/west
+```
+
+Make scripts executable:
 
 ```bash
 chmod +x scripts/*.sh tools/*.py install_naughty_platypus.sh
 ```
 
-## 4. Build the firmware
+Build:
 
 ```bash
+cd ~/Desktop/Platypus
 rm -rf build/naughty-platypus-offset1000
 ./scripts/build_naughty_platypus.sh 2>&1 | tee /tmp/naughty_build.log
 ```
 
-The build script should produce:
-
-```text
-releases/naughty-platypus-HT-n5262-offset1000.uf2
-```
-
-Expected UF2 inspection values:
-
-```text
-Address min: 0x00001000
-Families: ['0x239a0071']
-```
-
-### One-line build command
-
-```bash
-cd ~/Desktop/Platypus && rm -rf build/naughty-platypus-offset1000 && ./scripts/build_naughty_platypus.sh 2>&1 | tee /tmp/naughty_build.log
-```
-
-### Show useful build errors
-
-```bash
-grep -n -i "error:\|warning:\|undefined symbol\|failed" /tmp/naughty_build.log | tail -120
-```
-
-## 5. Flash the Heltec T114
-
-Run:
+Flash:
 
 ```bash
 ./scripts/flash_naughty_platypus.sh
@@ -217,347 +211,401 @@ Run:
 
 When prompted:
 
-1. Double-tap the Heltec `RST` button.
-2. Wait for the removable drive labeled `HT-n5262`.
-3. Allow the script to copy and sync the UF2.
+1. Double-tap `RST`.
+2. Wait for the drive labeled `HT-n5262`.
+3. Let the script copy and sync the UF2.
 4. Unplug the board.
 5. Wait about five seconds.
-6. Plug it back in normally without double-tapping reset.
+6. Reconnect normally without double-tapping reset.
 
-### One-line build and flash
+One-line build and flash:
 
 ```bash
 cd ~/Desktop/Platypus && rm -rf build/naughty-platypus-offset1000 && ./scripts/build_naughty_platypus.sh 2>&1 | tee /tmp/naughty_build.log && ./scripts/flash_naughty_platypus.sh
 ```
 
-## 6. Confirm the runtime serial device
+Show useful build errors:
 
 ```bash
-lsusb
-ls -l /dev/ttyACM*
-```
-
-The board normally appears as:
-
-```text
-/dev/ttyACM0
-```
-
-If your user cannot access the serial device without `sudo`, add the user to the serial-access group:
-
-```bash
-sudo usermod -aG dialout "$USER"
-```
-
-Log out and back in before testing the new group membership.
-
----
-
-# Viewing live survey output
-
-## Direct terminal command
-
-```bash
-cd ~/Desktop/Platypus
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-echo "Using $PORT"
-sudo timeout 120 bash -c "
-  stty -F $PORT 115200 raw -echo -crtscts 2>/dev/null || true
-  cat $PORT
-"
-```
-
-## One-line terminal command
-
-```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)" && echo "Using $PORT" && sudo timeout 120 bash -c "stty -F $PORT 115200 raw -echo -crtscts 2>/dev/null || true; cat $PORT"
-```
-
-## Using `screen`
-
-```bash
-sudo screen /dev/ttyACM0 115200
-```
-
-Exit `screen` with:
-
-```text
-Ctrl-A, then K, then Y
-```
-
-## Using `minicom`
-
-```bash
-sudo minicom -D /dev/ttyACM0 -b 115200
+grep -n -i "error:\|warning:\|undefined symbol\|failed" /tmp/naughty_build.log | tail -120
 ```
 
 ---
 
-# Saving a BLE survey log
+# Firmware commands
 
-The firmware emits one JSON object per line, which can be captured as JSONL.
-
-```bash
-cd ~/Desktop/Platypus
-mkdir -p captures
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-OUT="captures/ble_survey_$(date +%Y%m%d_%H%M%S).jsonl"
-echo "Saving $PORT to $OUT"
-sudo bash -c "
-  stty -F $PORT 115200 raw -echo -crtscts 2>/dev/null || true
-  timeout 300 cat $PORT
-" | tee "$OUT"
-```
-
-One-line five-minute capture:
+Open an interactive serial terminal:
 
 ```bash
-cd ~/Desktop/Platypus && mkdir -p captures && PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)" && OUT="captures/ble_survey_$(date +%Y%m%d_%H%M%S).jsonl" && echo "Saving $PORT to $OUT" && sudo bash -c "stty -F $PORT 115200 raw -echo -crtscts 2>/dev/null || true; timeout 300 cat $PORT" | tee "$OUT"
+screen /dev/ttyACM0 115200
 ```
 
-View the latest useful records:
-
-```bash
-LATEST="$(ls -t captures/ble_survey_*.jsonl | head -n1)"
-grep '"adv_summary"\|"survey_status"\|"queue_status"\|"scan_mode"' "$LATEST" | tail -50
-```
-
----
-
-# One-word firmware commands
-
-Type these directly into an interactive serial terminal, one command per line.
+Type one command per line:
 
 | Command | Action |
 |---|---|
-| `version` | Print firmware application and build version |
-| `status` | Print scanner, event, RSSI, and queue statistics |
-| `survey` | Drain queued advertisement summaries and print status |
-| `scan` | Start scanning using the currently selected mode |
+| `version` | Show firmware build |
+| `status` | Show scan and queue counters |
+| `survey` | Drain queued summaries and print status |
+| `scan` | Start scanning |
 | `stop` | Stop scanning |
-| `active` | Switch to active scanning and restart the scanner if necessary |
-| `passive` | Switch to passive scanning and restart the scanner if necessary |
-| `mode` | Show the selected active/passive mode |
-| `reset` | Clear counters and purge queued records |
-| `commands` | List the available one-word commands |
+| `active` | Use active scan mode |
+| `passive` | Use passive scan mode |
+| `mode` | Show active/passive mode |
+| `reset` | Reset counters and queue |
+| `commands` | List commands |
 
-Active scan is the firmware default.
+Active scanning is the default. Active scanning can receive scan-response data and therefore discovers more local names. Some devices will still show an empty name because they do not advertise one.
 
-### Active vs. passive scanning
-
-**Active scanning** sends standard BLE scan requests to scannable advertisers. This may produce scan-response records containing a local name or additional service/manufacturer data.
-
-**Passive scanning** listens without sending scan requests. It is quieter but often discovers fewer device names.
-
-Some devices will still show an empty name because they:
-
-- Do not advertise a local name.
-- Use manufacturer-specific payloads only.
-- Use rotating random addresses.
-- Advertise the name intermittently.
-- Require a connection before exposing identifying information.
+Exit `screen` with `Ctrl-A`, then `K`, then `Y`.
 
 ---
 
-# Sending commands from another terminal
+# Advanced host survey console
 
-Keep one terminal open reading `/dev/ttyACM0`, then use a second terminal to send a command.
-
-Show mode:
+Activate the virtual environment:
 
 ```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-printf '\r\nmode\r\n' | sudo tee "$PORT" >/dev/null
+cd ~/Desktop/Platypus
+source .venv-naughty/bin/activate
 ```
 
-Switch to active mode:
+## Interactive TUI
 
 ```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-printf '\r\nactive\r\n' | sudo tee "$PORT" >/dev/null
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --tui
 ```
 
-Switch to passive mode:
+TUI keys:
 
-```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-printf '\r\npassive\r\n' | sudo tee "$PORT" >/dev/null
+```text
+q / Esc   quit
+s         start scan
+x         stop scan
+a         active mode
+p         passive mode
+r         reset firmware counters
+v         toggle strongest/recent sorting
+d         recently-seen view
+t         strongest-device view
+c         show advertising-channel capability/counts
 ```
 
-Show status:
+## Full survey session with all exports
 
 ```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-printf '\r\nstatus\r\n' | sudo tee "$PORT" >/dev/null
+mkdir -p captures
+
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --tui \
+  --jsonl captures/session.jsonl \
+  --events-csv captures/observations.csv \
+  --csv captures/devices.csv \
+  --db captures/surveys.sqlite \
+  --session-name "Office BLE survey"
 ```
 
-List firmware commands:
+Outputs:
+
+| Output | Purpose |
+|---|---|
+| JSONL | Normalized raw event stream |
+| Observation CSV | One row per retained advertisement |
+| Inventory CSV | One row per cached device |
+| SQLite | Sessions, observations, and final device inventory |
+
+## Timed survey
 
 ```bash
-PORT="$(ls /dev/ttyACM* 2>/dev/null | head -n1)"
-printf '\r\ncommands\r\n' | sudo tee "$PORT" >/dev/null
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --duration 300 \
+  --csv captures/devices.csv \
+  --events-csv captures/observations.csv
+```
+
+## Strongest or recently-seen summaries
+
+Strongest-first:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --sort strongest
+```
+
+Recently-seen first:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --sort recent
+```
+
+In the TUI, press `v` to switch between the two views.
+
+---
+
+# Per-device cache and duplicate suppression
+
+The host maintains one record per reported BLE address and tracks:
+
+- First and last seen timestamps
+- Observation count
+- Retained and suppressed counts
+- Last, strongest, weakest, and average RSSI
+- Estimated advertising interval
+- Latest local name
+- Manufacturer identifier/name
+- Beacon type and identifier
+- Last manufacturer/service/payload data
+- Last GPS fix
+
+Host duplicate suppression defaults to a 1.5-second window:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --dedupe-window 1.5
+```
+
+Disable host duplicate suppression:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --dedupe-window 0
+```
+
+Duplicate suppression is an analysis/output control. The device observation counter still records received events.
+
+---
+
+# Advertising interval estimation
+
+The host estimates the interval between observations for each address using an exponential moving average.
+
+The estimate is useful for survey comparison and identifying periodic advertisers, but it is not guaranteed to equal the configured BLE advertising interval because:
+
+- Advertisers add randomized delay.
+- Individual packets may be missed.
+- Scan windows may not cover every advertising event.
+- Active scan responses can add observations.
+- Randomized addresses can split one physical device into multiple cache entries.
+
+The value is exported as:
+
+```text
+interval_ema_ms
 ```
 
 ---
 
-# Example output
+# Advertising-channel statistics
 
-Boot and scan startup:
+The host accepts a `channel` or `primary_channel` field when a firmware/controller API exposes it and counts observations per channel.
 
-```json
-{"type":"serial_boot","app":"naughty-platypus","path":"direct_cdc"}
-{"type":"firmware_marker","build":"ble_active_default_v5"}
-{"type":"scan_diag","step":"start","scan_type":1,"mode":"active","interval":160,"window":48}
-{"path":"direct_cdc","type":"scan_start","err":0}
+The current Zephyr scan callback used by this HT-n5262 build does **not reliably expose the exact BLE advertising channel index**, so the TUI normally reports:
+
+```text
+BLE advertising channels: not exposed by current controller callback
 ```
 
-Advertisement summary:
+This is a capability limitation, not a guessed statistic. Future firmware/controller backends can add the field without changing the host export format.
+
+---
+
+# Manufacturer lookup
+
+A built-in table covers several common Bluetooth company identifiers. Supply a larger Bluetooth SIG-style CSV with:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --manufacturer-db /path/to/company_identifiers.csv
+```
+
+The CSV parser accepts common ID columns such as `Decimal`, `Value`, `Company Identifier`, `company_id`, `ID`, or `Hex`, and common name columns such as `Company`, `Company Name`, `Organization`, or `Name`.
+
+Manufacturer identifiers are decoded from the first two manufacturer-data bytes using Bluetooth little-endian ordering.
+
+---
+
+# Beacon and service parsing
+
+The host recognizes:
+
+| Protocol | Source data |
+|---|---|
+| iBeacon | Apple manufacturer data (`0x004C`, type `0x0215`) |
+| AltBeacon | Manufacturer data with beacon code `0xBEAC` |
+| Eddystone UID | Service UUID `0xFEAA`, frame `0x00` |
+| Eddystone URL | Service UUID `0xFEAA`, frame `0x10` |
+| Eddystone TLM | Service UUID `0xFEAA`, frame `0x20` |
+| Eddystone EID | Service UUID `0xFEAA`, frame `0x30` |
+| Fast Pair | Service UUID `0xFE2C` |
+
+Decoded fields are written to:
+
+```text
+beacon_type
+beacon_id
+beacon_details
+```
+
+The parser only interprets data that was openly advertised. It does not connect to devices or request protected information.
+
+---
+
+# GPS tagging
+
+## GPSD
+
+Start GPSD for your receiver, then run:
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --gpsd 127.0.0.1:2947 \
+  --db captures/mobile-survey.sqlite \
+  --events-csv captures/mobile-observations.csv \
+  --tui
+```
+
+Check GPSD separately:
+
+```bash
+gpspipe -w
+```
+
+## Static coordinates
+
+```bash
+python3 tools/naughty_platypus_host.py \
+  --port /dev/ttyACM0 \
+  --lat 40.7128 \
+  --lon -74.0060 \
+  --alt 15 \
+  --db captures/fixed-site.sqlite
+```
+
+GPS fields are attached to retained observations and final device records.
+
+---
+
+# SQLite session database
+
+The database contains:
+
+```text
+sessions
+observations
+devices
+```
+
+Inspect it:
+
+```bash
+sqlite3 captures/surveys.sqlite
+```
+
+Example queries:
+
+```sql
+SELECT id, name, datetime(started_at, 'unixepoch'), port
+FROM sessions
+ORDER BY id DESC;
+
+SELECT addr, name, manufacturer_name, beacon_type, best_rssi, count
+FROM devices
+WHERE session_id = 1
+ORDER BY best_rssi DESC;
+
+SELECT datetime(seen_at, 'unixepoch'), addr, rssi, latitude, longitude
+FROM observations
+WHERE session_id = 1
+ORDER BY seen_at;
+```
+
+---
+
+# Example firmware output
 
 ```json
 {"type":"adv_summary","addr":"B8:27:EB:E8:70:0A (public)","name":"KB-BLE-TEST","rssi":-67,"adv_type":0,"data_len":18,"mfg":"","svc16":"0f18","drained_events":42}
-```
-
-Status records:
-
-```json
 {"type":"survey_status","scanning":true,"scan_mode":"active","adv_events":828,"named_events":4,"mfg_events":30,"svc_events":12,"strongest_rssi":-61,"weakest_rssi":-95}
 {"type":"queue_status","queued_events":828,"dropped_events":0,"drained_events":828,"pending":0}
 ```
 
-Address notes:
-
-```text
-(public) = public or public-identity address reported by the Bluetooth stack
-(random) = random static, resolvable private, or non-resolvable private address
-```
-
-Do not assume a randomized address permanently identifies a physical device.
+Randomized BLE addresses should not be treated as permanent physical-device identifiers.
 
 ---
 
-# Test advertiser using a Raspberry Pi or Linux adapter
-
-A second Linux machine can advertise a clearly named test payload with BlueZ `btmgmt`.
-
-Install BlueZ if necessary:
+# Run decoder tests
 
 ```bash
-sudo apt update
-sudo apt install -y bluez
-```
-
-Configure the adapter:
-
-```bash
-sudo btmgmt power off
-sudo btmgmt le on
-sudo btmgmt bredr off
-sudo btmgmt connectable on
-sudo btmgmt power on
-```
-
-Advertise the test name `KB-BLE-TEST` in the primary advertising data:
-
-```bash
-sudo btmgmt advertising off 2>/dev/null || true
-sudo btmgmt clr-adv 2>/dev/null || true
-sudo btmgmt add-adv -d 02010603030f180c094b422d424c452d54455354 1
-sudo btmgmt advertising on
-```
-
-Verify:
-
-```bash
-sudo btmgmt info
-sudo btmgmt advinfo 2>/dev/null || true
-```
-
-Stop the test advertiser:
-
-```bash
-sudo btmgmt advertising off
+python3 -m unittest tests/test_np_protocols.py
 ```
 
 ---
 
-# Troubleshooting on Kali and Parrot
+# Troubleshooting
 
 ## No `/dev/ttyACM0`
 
-Check both normal and bootloader enumeration:
-
 ```bash
 lsusb
+ls -l /dev/ttyACM*
 lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
 sudo dmesg --follow
 ```
 
-If the drive label is `HT-n5262`, the board is still in UF2 bootloader mode. Unplug it and reconnect normally.
+If the board shows as the `HT-n5262` removable drive, it is still in UF2 bootloader mode. Reconnect it normally.
 
 ## Permission denied
-
-Temporarily use `sudo`, or add your account to `dialout`:
 
 ```bash
 sudo usermod -aG dialout "$USER"
 ```
 
-## Serial device is busy
+Log out and back in.
 
-Find the process using it:
+## Serial device busy
 
 ```bash
 sudo lsof /dev/ttyACM0
 sudo fuser -v /dev/ttyACM0
 ```
 
-Close `screen`, `minicom`, another `cat`, or any ModemManager session that has opened the device.
+Close other `screen`, `minicom`, `cat`, or ModemManager sessions.
 
-## ModemManager interferes
-
-Kali or Parrot may probe a new CDC serial device as a modem. Stop it temporarily:
+## ModemManager interference
 
 ```bash
 sudo systemctl stop ModemManager 2>/dev/null || true
 ```
 
-Disable it only when you do not need cellular modem management:
-
-```bash
-sudo systemctl disable --now ModemManager
-```
-
 ## Names are blank
 
-Blank names are normal. Confirm active mode:
+Use active mode:
 
 ```text
-mode
 active
+mode
 ```
 
-Then test with the known `KB-BLE-TEST` Linux advertiser shown above.
+Blank names remain normal for advertisers that omit the Local Name field.
 
-## Queue drops rise quickly
-
-Check:
+## Queue drops
 
 ```text
 status
 ```
 
-If `dropped_events` rises rapidly:
-
-- Reduce serial output.
-- Use passive mode in dense environments.
-- Increase the drain rate carefully.
-- Aggregate records by address on the host instead of printing every event indefinitely.
-
-## Build failed
-
-```bash
-grep -n -i "error:\|warning:\|undefined symbol\|failed" /tmp/naughty_build.log | tail -120
-```
+If `dropped_events` rises rapidly, reduce serial output, use passive mode in dense environments, or rely on host-side caching and deduplication rather than printing every raw record indefinitely.
 
 ---
 
@@ -566,79 +614,16 @@ grep -n -i "error:\|warning:\|undefined symbol\|failed" /tmp/naughty_build.log |
 ```text
 Platypus/
 ├── README.md
-├── install_naughty_platypus.sh
-├── firmware/
-│   └── naughty-platypus/
-│       ├── CMakeLists.txt
-│       ├── Kconfig
-│       ├── app.overlay
-│       ├── prj.conf
-│       └── src/
-│           ├── main.c
-│           ├── passive_survey.c
-│           └── passive_survey.h
+├── firmware/naughty-platypus/
 ├── scripts/
-│   ├── build_naughty_platypus.sh
-│   └── flash_naughty_platypus.sh
 ├── tools/
-│   ├── inspect_uf2.py
-│   ├── patch_uf2_family.py
-│   └── naughty_platypus_host.py
-├── docs/
-│   └── images/
-│       └── naughty-platypus-banner.jpg
+│   ├── naughty_platypus_host.py
+│   ├── np_protocols.py
+│   └── requirements-naughty-platypus.txt
+├── tests/
+│   └── test_np_protocols.py
+├── docs/images/
 └── releases/
-    └── naughty-platypus-HT-n5262-offset1000.uf2
-```
-
-Generated captures, UF2 releases, local builds, and editor backups should remain untracked unless intentionally published as a release artifact.
-
----
-
-# Current feature status
-
-## Implemented
-
-- Stable queue-based BLE advertisement collection.
-- Active scan as the default mode.
-- Optional passive mode.
-- Runtime active/passive switching.
-- MAC/address and address-type output.
-- RSSI, advertisement type, and payload-length output.
-- Local-name extraction when advertised.
-- Manufacturer-data preview.
-- 16-bit service-data preview.
-- Queue depth and drop statistics.
-- Strongest and weakest observed RSSI.
-- One-word serial commands.
-- HT-n5262 offset and UF2-family patching.
-
-## Planned
-
-- Per-device cache and duplicate suppression.
-- Strongest-device and recently-seen summaries.
-- Advertising interval estimation.
-- BLE advertising-channel statistics where supported by the controller API.
-- Manufacturer ID lookup on the host.
-- iBeacon, Eddystone, AltBeacon, and Fast Pair parsing.
-- CSV and analysis-friendly capture export.
-- Interactive terminal UI.
-- GPS tagging and database-backed survey sessions.
-
----
-
-# Ubertooth comparison
-
-Naughty Platypus borrows the workflow concept of a dedicated Bluetooth observation device, but its hardware and radio architecture differ from Ubertooth One.
-
-Naughty Platypus currently focuses on BLE advertisement and scan-response discovery through the Nordic/Zephyr BLE stack. It does not provide arbitrary raw 2.4 GHz capture, Bluetooth Classic baseband monitoring, jamming, packet injection, or connection-key recovery.
-
-The practical goal is:
-
-```text
-Ubertooth-inspired BLE survey workflow
-not
-Ubertooth One hardware emulation
 ```
 
 ---
@@ -647,12 +632,10 @@ Ubertooth One hardware emulation
 
 Use Naughty Platypus only:
 
-- On equipment and networks you own.
-- In environments where you have explicit authorization.
-- For defensive discovery, inventory, troubleshooting, education, and research.
-- In compliance with applicable privacy, radio, and computer-access laws.
-
-The project intentionally excludes disruptive radio behavior, forced disconnections, unauthorized connection attempts, credential attacks, and denial-of-service functionality.
+- On equipment and networks you own
+- In environments where you have explicit authorization
+- For defensive discovery, inventory, troubleshooting, education, and research
+- In compliance with applicable privacy, radio, and computer-access laws
 
 ---
 
@@ -669,10 +652,10 @@ The project intentionally excludes disruptive radio behavior, forced disconnecti
 
 ## Branch
 
-This documentation describes:
+This README describes:
 
 ```text
 naughty-platypus
 ```
 
-To return to the regular USB HCI version, switch to the main/default Platypus branch and follow that branch's README.
+For a normal BlueZ HCI controller, switch back to the regular Platypus branch and follow that branch's README.
