@@ -61,6 +61,13 @@ Platypus/
 
 ## Quick start: build and flash the sniffer firmware
 
+No local Zephyr workspace (e.g. building from a phone)? GitHub Actions can
+build it for you in the cloud instead - see
+[`docs/CI-FIRMWARE-BUILD.md`](docs/CI-FIRMWARE-BUILD.md). Skip straight to
+flashing once you've downloaded the `.uf2` from there.
+
+With a local Zephyr workspace:
+
 ```sh
 chmod +x scripts/*.sh tools/*.py
 ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./scripts/build_sniffer.sh

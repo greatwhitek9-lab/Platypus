@@ -1,0 +1,81 @@
+name: Build Platypus Sniffer firmware
+
+# Builds firmware/platypus-sniffer in a container that already has the
+# Zephyr SDK + toolchain installed (the official Zephyr project CI image),
+# patches the UF2 the same way scripts/build_sniffer.sh does locally, and
+# uploads the result so it can be downloaded and flashed without ever
+# compiling Zephyr on a phone/Termux.
+on:
+  push:
+    branches: [naughty-platypus]
+    paths:
+      - "firmware/platypus-sniffer/**"
+      - "tools/inspect_uf2.py"
+      - "tools/patch_uf2_family.py"
+      - ".github/workflows/build-sniffer-firmware.yml"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Pin to a specific tag rather than :latest so builds stay reproducible;
+    # bump deliberately when you want a newer Zephyr/SDK version.
+    container: ghcr.io/zephyrproject-rtos/ci:v0.27.4
+    env:
+      ZEPHYR_BASE: /workspace/zephyr
+    steps:
+      - name: Check out this repo
+        uses: actions/checkout@v4
+        with:
+          path: repo
+
+      # NOTE: if `heltec_t114_v2` is NOT an upstream Zephyr board (i.e. your
+      # local build only works because you have a custom boards/ folder in
+      # your own Zephyr workspace that isn't committed anywhere in this
+      # repo), this build will fail with "board not found". If that
+      # happens: copy that custom board definition folder into this repo
+      # (e.g. repo/boards/...) and commit it - this workflow picks up a
+      # top-level boards/ folder automatically via BOARD_ROOT below.
+      - name: Set up west workspace (plain upstream Zephyr checkout)
+        working-directory: /workspace
+        run: |
+          pip install -U west
+          west init /workspace/zephyrproject
+
+      - name: Fetch Zephyr + modules
+        working-directory: /workspace/zephyrproject
+        run: |
+          west update
+          west zephyr-export
+          pip install -r zephyr/scripts/requirements.txt
+
+      - name: Build firmware
+        working-directory: /workspace/zephyrproject
+        run: |
+          BOARD_ROOT_ARG=""
+          if [ -d "/github/workspace/repo/boards" ]; then
+            BOARD_ROOT_ARG="-DBOARD_ROOT=/github/workspace/repo"
+          fi
+          west build -b heltec_t114_v2/nrf52840/uf2 \
+            -d build/platypus-sniffer \
+            /github/workspace/repo/firmware/platypus-sniffer \
+            --pristine \
+            -- $BOARD_ROOT_ARG
+
+      - name: Patch UF2 for HT-n5262
+        working-directory: /github/workspace/repo
+        run: |
+          mkdir -p releases
+          python3 tools/inspect_uf2.py /workspace/zephyrproject/build/platypus-sniffer/zephyr/zephyr.uf2 || true
+          python3 tools/patch_uf2_family.py \
+            /workspace/zephyrproject/build/platypus-sniffer/zephyr/zephyr.uf2 \
+            releases/platypus-sniffer-HT-n5262-offset1000.uf2 \
+            --family 0x239a0071
+          python3 tools/inspect_uf2.py releases/platypus-sniffer-HT-n5262-offset1000.uf2
+
+      - name: Upload built UF2
+        uses: actions/upload-artifact@v4
+        with:
+          name: platypus-sniffer-uf2
+          path: repo/releases/platypus-sniffer-HT-n5262-offset1000.uf2
+          retention-days: 30
