@@ -104,7 +104,7 @@ int radio_ble_set_channel(uint8_t channel, uint32_t access_address,
 
     nrf_radio_base0_set(NRF_RADIO, (access_address << 8));
     nrf_radio_prefix0_set(NRF_RADIO, (access_address >> 24) & 0xFF);
-    nrf_radio_rxaddresses_set(NRF_RADIO, NRF_RADIO_RXADDRESS_ADDRESS0);
+    nrf_radio_rxaddresses_set(NRF_RADIO, 1 /* bit 0 = enable logical address 0 (BASE0+PREFIX0) */);
 
     nrf_radio_crcinit_set(NRF_RADIO, crc_init);
 
