@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Matches the Platypus Sniffer's USB VID/PID, set in
+  firmware/platypus-sniffer/prj.conf:
+    CONFIG_USB_DEVICE_VID=0x239A  (decimal 9114)
+    CONFIG_USB_DEVICE_PID=0x0002  (decimal 2)
+-->
+<resources>
+    <usb-device vendor-id="9114" product-id="2" />
+</resources>

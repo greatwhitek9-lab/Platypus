@@ -1,692 +1,160 @@
-# 🦫 Platypus
+# 🦫 Platypus Sniffer (naughty-platypus branch)
 
-**A clean USB BLE HCI firmware build for the Heltec T114 / HT-n5262 nRF52840 board.**
+This branch turns the Heltec T114 / HT-n5262 (nRF52840) board from a plain
+USB **BlueZ HCI adapter** (see `main`) into a **promiscuous BLE sniffer
+dongle**, in the spirit of Ubertooth: it captures raw over-the-air BLE
+packets - advertising traffic and (best-effort) followed connections -
+instead of acting like a normal Bluetooth controller.
 
-Platypus turns the **Heltec T114** into a plug-in USB Bluetooth Low Energy controller for Linux. After flashing, the board stops acting like a dev board and starts behaving like a dedicated **BlueZ-compatible USB HCI adapter** that can be used by standard Linux Bluetooth tools such as `bluetoothctl`, `btmgmt`, `btmon`, and BlueZ-backed applications.
+Output goes to Wireshark-readable `.pcap` files, either from a desktop CLI,
+live inside Wireshark via an extcap plugin, or (new, early scaffold) from an
+Android app over USB-C OTG.
 
-It is small, weird, practical, and slightly feral — exactly like a platypus.
+For the full architecture, protocol, and - importantly - current
+limitations, see [`docs/SNIFFER-ARCHITECTURE.md`](docs/SNIFFER-ARCHITECTURE.md).
+**Read the limitations section before relying on this for real captures** -
+connection-following timing and CRC-byte recovery are first-cut, unverified
+on real hardware.
 
----
+## Target hardware
 
-## What Platypus does
-
-Platypus flashes the Heltec T114 / HT-n5262 board with Zephyr's Bluetooth HCI USB firmware, then applies the extra UF2 fixes needed for the HT-n5262 bootloader.
-
-Once flashed, the board appears on the Linux host as:
-
-```text
-NordicSemiconductor Zephyr USBD BT HCI
-```
-
-On a host that already has built-in Bluetooth, you should see two HCI controllers:
-
-```text
-hci0  hci1
-```
-
-Typically:
-
-```text
-hci0 = internal Bluetooth adapter
-hci1 = Platypus / Heltec T114 USB BLE HCI adapter
-```
-
-Platypus is useful when you want a removable, dedicated BLE interface for a Linux lab machine without relying on the host laptop's internal Bluetooth chipset.
-
----
-
-## Target board
-
-Platypus is built for:
+Same board as `main`:
 
 | Item | Value |
 |---|---|
 | Board | Heltec T114 / HT-n5262 |
 | MCU | Nordic nRF52840 |
-| Bootloader | HT-n5262 UF2 bootloader |
-| USB boot mode | Double-tap `RST` |
-| Linux stack | BlueZ |
-| Known host OS | Kali Linux / Debian-style Linux |
-| Firmware role | USB Bluetooth HCI adapter |
+| Bootloader | HT-n5262 UF2 bootloader (double-tap RST for UF2 mode) |
+| UF2 family | `0x239a0071` |
+| Flash offset fix | `CONFIG_FLASH_LOAD_OFFSET=0x1000` (same fix `main` needed) |
 
-The board's UF2 bootloader identifies as:
+## Repository layout (this branch)
 
-```text
-Model: HT-n5262
-Board-ID: HT-n5262
-UF2 family: 0x239a0071
 ```
-
----
-
-## Why this repo exists
-
-The stock Zephyr build target for the Heltec T114 can produce a UF2 file, but the default output did not boot correctly on the tested HT-n5262 board.
-
-The broken build looked like this:
-
-```text
-Address min: 0x00026000
-Family: 0xada52840
-```
-
-The board accepted the copied UF2 file, but after a normal unplug/replug it did not enumerate as an app. It only appeared again when forced back into UF2 bootloader mode.
-
-The working Platypus build fixes that by forcing the correct app offset and patching the UF2 family ID.
-
-Working Platypus UF2 metadata:
-
-```text
-Address min: 0x00001000
-Families: ['0x239a0071']
-```
-
-Required build fixes:
-
-```text
-CONFIG_USE_DT_CODE_PARTITION=n
-CONFIG_FLASH_LOAD_OFFSET=0x1000
-CONFIG_FLASH_LOAD_SIZE=0xdf000
-UF2 family patched to 0x239a0071
-```
-
-That is the core of Platypus.
-
----
-
-## Repository layout
-
-```text
 Platypus/
-├── README.md
-├── install.sh
-├── scripts/
-│   ├── build_platypus.sh
-│   ├── flash_uf2.sh
-│   ├── one_shot_install.sh
-│   └── verify_bluez.sh
-├── tools/
-│   ├── inspect_uf2.py
-│   └── patch_uf2_family.py
-├── docs/
-│   └── HT-n5262-UF2-fix.md
+├── README.md                          (this file)
 ├── firmware/
-│   └── README.md
-└── releases/
-    └── platypus-hci-usb-HT-n5262-offset1000.uf2
+│   └── platypus-sniffer/              NEW: bare-radio BLE sniffer firmware
+│       ├── CMakeLists.txt
+│       ├── prj.conf
+│       └── src/
+│           ├── main.c
+│           ├── radio_ble.{c,h}        raw nRF52840 RADIO driver
+│           ├── channel_hop.{c,h}      adv scan + connection-follow state machine
+│           ├── proto_framer.{c,h}     dongle<->host wire protocol
+│           └── usb_transport.{c,h}    USB CDC-ACM transport
+├── tools/
+│   ├── platypus_proto.py              NEW: shared protocol decoder
+│   ├── platypus_sniff.py              NEW: CLI capture -> .pcap
+│   ├── extcap/platypus_extcap.py      NEW: Wireshark extcap plugin
+│   ├── inspect_uf2.py                 (from main, unchanged)
+│   └── patch_uf2_family.py            (from main, unchanged)
+├── scripts/
+│   ├── build_sniffer.sh               NEW: build firmware/platypus-sniffer
+│   ├── verify_sniffer.sh              NEW: confirm USB enumeration + version ping
+│   └── flash_uf2.sh                   (from main, unchanged - generic UF2 flasher)
+├── android/                            NEW: companion app scaffold (early)
+│   └── app/...                         USB-host capture + pcap export
+└── docs/
+    └── SNIFFER-ARCHITECTURE.md         NEW: full design + known limitations
 ```
 
-The `releases/` folder may include a prebuilt UF2. You can also rebuild it locally from your Zephyr workspace.
+## Quick start: build and flash the sniffer firmware
 
----
-
-## Quick start: flash the prebuilt UF2
-
-Use this path if the repo already contains:
-
-```text
-releases/platypus-hci-usb-HT-n5262-offset1000.uf2
-```
-
-### 1. Put the Heltec T114 into UF2 mode
-
-Double-tap the **RST** button on the board.
-
-The board should appear as a small removable drive labeled something like:
-
-```text
-HT-n5262
-```
-
-On Linux, confirm with:
-
-```bash
-lsusb
-lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
-```
-
-Expected USB identity while in bootloader mode:
-
-```text
-239a:0071 Adafruit HT-n5262
-```
-
-### 2. Flash the UF2
-
-From the repo root:
-
-```bash
-chmod +x install.sh scripts/*.sh tools/*.py
-./install.sh --skip-build
-```
-
-The installer waits for the `HT-n5262` UF2 drive, copies the firmware, syncs the filesystem, and unmounts the drive.
-
-### 3. Replug normally
-
-After flashing:
-
-1. Unplug the board.
-2. Wait about five seconds.
-3. Plug it back in normally.
-4. Do **not** double-tap reset this time.
-
-If the firmware is running, the board should no longer appear as the `HT-n5262` UF2 drive. It should appear as a USB Bluetooth HCI device.
-
----
-
-## One-shot installer
-
-The easiest full flow is:
-
-```bash
-chmod +x install.sh scripts/*.sh tools/*.py
-./install.sh
-```
-
-The one-shot installer will:
-
-1. Use a prebuilt release UF2 if Zephyr is not available.
-2. Build the Zephyr Bluetooth HCI USB firmware if your Zephyr workspace is available.
-3. Force the HT-n5262 app offset to `0x1000`.
-4. Patch the UF2 family to `0x239a0071`.
-5. Flash the Heltec T114 UF2 drive.
-6. Verify that Linux and BlueZ can see the controller.
-
-The default Zephyr paths are:
-
-```text
-ZEPHYR_BASE=$HOME/ble-dongle-build/zephyrproject/zephyr
-WEST=$HOME/ble-dongle-build/.venv/bin/west
-```
-
-You can override those paths:
-
-```bash
-ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh
-```
-
----
-
-## Installer options
-
-`install.sh` supports several modes depending on whether you want a full build, a quick flash, or just verification.
-
-### Show help
-
-Use this to print every available option:
-
-```bash
-./install.sh --help
-```
-
-### Standard full install
-
-Use this when you want Platypus to build, patch, flash, and verify in one run:
-
-```bash
-./install.sh
-```
-
-Best for: normal development machines that already have a working Zephyr environment.
-
-What it does:
-
-1. Checks for Zephyr and `west`.
-2. Builds the HCI USB firmware if possible.
-3. Creates the patched HT-n5262 UF2.
-4. Prompts you to double-tap `RST`.
-5. Flashes the board.
-6. Prompts you to replug normally.
-7. Verifies USB and BlueZ status.
-
-### Flash-only / skip-build mode
-
-Use this when the repo already contains the working UF2 and you do **not** want to rebuild firmware:
-
-```bash
-./install.sh --skip-build
-```
-
-`--flash-only` is also supported and behaves the same way:
-
-```bash
-./install.sh --flash-only
-```
-
-Best for: quickly flashing a board using the existing file:
-
-```text
-releases/platypus-hci-usb-HT-n5262-offset1000.uf2
-```
-
-What it does:
-
-1. Skips Zephyr build completely.
-2. Uses the existing release UF2.
-3. Waits for the HT-n5262 UF2 drive.
-4. Copies the UF2 to the board.
-5. Verifies after replug unless `--no-verify` is also used.
-
-### Build-only mode
-
-Use this when you want to generate or validate the patched UF2 but do **not** want to flash the board yet:
-
-```bash
-./install.sh --no-flash
-```
-
-Best for: checking that the build and UF2 patch are correct before touching hardware.
-
-Expected final UF2:
-
-```text
-releases/platypus-hci-usb-HT-n5262-offset1000.uf2
-```
-
-Expected metadata:
-
-```text
-Address min: 0x00001000
-Families: ['0x239a0071']
-```
-
-### Skip verification
-
-Use this when you only want to flash and do not want the script to restart Bluetooth or check BlueZ:
-
-```bash
-./install.sh --skip-build --no-verify
-```
-
-Best for: systems where you do not want services restarted, or when you are flashing from a machine that will not be the final Bluetooth host.
-
-### Install common dependencies
-
-Use this on a fresh Kali/Debian-style system to install common build and host-side utilities:
-
-```bash
-./install.sh --install-deps
-```
-
-This uses `apt` to install common packages such as:
-
-```text
-git python3 python3-venv python3-pip cmake ninja-build gperf ccache
-dfu-util device-tree-compiler wget curl xz-utils file make gcc g++
-bluez usbutils util-linux
-```
-
-You can combine it with the normal install:
-
-```bash
-./install.sh --install-deps
-```
-
-Or combine it with build-only mode:
-
-```bash
-./install.sh --install-deps --no-flash
-```
-
-### Assume yes for prompts
-
-Use this when you want fewer interactive prompts:
-
-```bash
-./install.sh --yes
-```
-
-Important: even with `--yes`, you still need to physically put the board into UF2 mode when flashing, and physically unplug/replug after flashing.
-
-Common unattended-style build-only command:
-
-```bash
-./install.sh --yes --no-flash
-```
-
-Common flash command using existing UF2:
-
-```bash
-./install.sh --yes --skip-build
-```
-
-### Custom Zephyr workspace
-
-Use this when your Zephyr workspace is not in the default location:
-
-```bash
-ZEPHYR_BASE=/home/urbanpoacher/my-zephyr/zephyr \
-WEST=/home/urbanpoacher/my-zephyr/.venv/bin/west \
-./install.sh
-```
-
-### Custom release UF2 path
-
-Use this when you want to flash a specific UF2 file:
-
-```bash
-RELEASE_UF2=/path/to/platypus.uf2 ./install.sh --skip-build
-```
-
-### Custom mount path
-
-By default, the script mounts the UF2 drive at:
-
-```text
-/mnt/t114
-```
-
-Override it with:
-
-```bash
-MOUNT_DIR=/tmp/t114 ./install.sh --skip-build
-```
-
-### Recommended commands by situation
-
-| Situation | Command |
-|---|---|
-| Full build, flash, verify | `./install.sh` |
-| Flash existing UF2 only | `./install.sh --skip-build` |
-| Flash existing UF2 and skip BlueZ checks | `./install.sh --skip-build --no-verify` |
-| Build UF2 only | `./install.sh --no-flash` |
-| Install dependencies first | `./install.sh --install-deps` |
-| Use custom Zephyr path | `ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh` |
-| Use custom UF2 | `RELEASE_UF2=/path/to/file.uf2 ./install.sh --skip-build` |
-
----
-
-## Manual build
-
-Use this if you want to rebuild the UF2 yourself without the root installer.
-
-```bash
+```sh
 chmod +x scripts/*.sh tools/*.py
-./scripts/build_platypus.sh
+ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./scripts/build_sniffer.sh
 ```
 
-The build script will:
+This builds `firmware/platypus-sniffer`, patches the UF2 the same way
+`main` does (offset `0x1000`, family `0x239a0071`), and writes:
 
-1. Locate your Zephyr workspace.
-2. Use the Zephyr Bluetooth HCI USB sample.
-3. Build for `heltec_t114_v2/nrf52840/uf2`.
-4. Override the default flash layout.
-5. Patch the UF2 family for HT-n5262.
-6. Print UF2 metadata before and after patching.
-
-Expected final output:
-
-```text
-releases/platypus-hci-usb-HT-n5262-offset1000.uf2
+```
+releases/platypus-sniffer-HT-n5262-offset1000.uf2
 ```
 
-Expected final inspection:
+Then flash it exactly like `main`'s firmware:
 
-```text
-Address min: 0x00001000
-Families: ['0x239a0071']
+1. Double-tap RST to put the board into UF2 mode.
+2. `./scripts/flash_uf2.sh releases/platypus-sniffer-HT-n5262-offset1000.uf2`
+3. Unplug, wait ~5s, plug back in normally (no double-tap this time).
+
+Verify it enumerated and is alive:
+
+```sh
+./scripts/verify_sniffer.sh            # auto-detects /dev/ttyACM*
+./scripts/verify_sniffer.sh /dev/ttyACM1   # or specify the port
 ```
 
----
+Unlike `main`, you will **not** see a new `hciN` controller - this firmware
+intentionally doesn't register with BlueZ. You'll see a USB-serial device
+(`/dev/ttyACM*`) instead.
 
-## Manual flash
+## Capturing on a desktop/laptop (Linux, macOS, Windows)
 
-Put the board into UF2 mode by double-tapping **RST**, then run:
-
-```bash
-./scripts/flash_uf2.sh
+```sh
+pip install pyserial
+python3 tools/platypus_sniff.py --port /dev/ttyACM0 --out capture.pcap
 ```
 
-By default, the flasher uses:
+Open `capture.pcap` in Wireshark - it uses
+`LINKTYPE_BLUETOOTH_LE_LL_WITH_PHDR`, the same format Wireshark's built-in
+BLE LL dissector expects.
 
-```text
-releases/platypus-hci-usb-HT-n5262-offset1000.uf2
+### Live capture inside Wireshark (extcap)
+
+```sh
+ln -s "$(pwd)/tools/extcap/platypus_extcap.py" \
+    ~/.local/lib/wireshark/extcap/platypus_extcap.py
+chmod +x ~/.local/lib/wireshark/extcap/platypus_extcap.py
 ```
 
-You can also pass a UF2 file explicitly:
+Restart Wireshark - "Platypus BLE Sniffer" appears in the interface list.
 
-```bash
-./scripts/flash_uf2.sh path/to/firmware.uf2
+## Capturing from an Android phone/tablet (early scaffold)
+
+The `android/` folder is a reference starting point for the full Android
+app, not the finished product - but the connection/capture pipeline itself
+is already **fully automated**, with no "Connect" button anywhere:
+
+1. Plug the dongle in over USB-OTG.
+2. The app (via a background foreground-service, `DongleService`) detects
+   it, requests USB permission, opens the serial port, sends `PING`, and on
+   `PONG` automatically sends `SET_MODE` to arm advertising-channel
+   scanning - all without any taps.
+3. A `.pcap` file starts filling up immediately under the app's own
+   storage, and keeps going even if you lock the screen or switch apps
+   (a persistent notification shows live status/packet count).
+4. The only manual control in the UI is "Start new capture file" - a clean
+   Material 3 dashboard card shows connection stage, firmware version,
+   packet count, and the last channel/RSSI.
+
+Still future work: a real packet-list/filter UI, live BLE PDU decoding, and
+connection-follow controls/visualization.
+
+Requirements:
+- A USB-C OTG adapter/cable (matches the Galaxy S26 Ultra's port; check
+  the right adapter for other devices).
+- The phone/tablet must support USB host mode (`android.hardware.usb.host`)
+  - true for the Galaxy S26 Ultra and most modern Android devices, not
+    guaranteed on older/budget hardware.
+
+Build with Android Studio (or `./gradlew assembleDebug` from `android/`)
+after opening the `android/` folder as a project. First launch asks for
+notification permission (for the status notification) and USB permission
+when the dongle is attached - accept both, then it's hands-off from there.
+
+## Manual build (no wrapper script)
+
+```sh
+west build -b heltec_t114_v2/nrf52840/uf2 -d build/platypus-sniffer firmware/platypus-sniffer
+python3 tools/patch_uf2_family.py build/platypus-sniffer/zephyr/zephyr.uf2 \
+    releases/platypus-sniffer-HT-n5262-offset1000.uf2 --family 0x239a0071
 ```
 
----
-
-## Verify on Linux
-
-After flashing and plugging the board in normally, run:
-
-```bash
-./scripts/verify_bluez.sh
-```
-
-Or verify manually:
-
-```bash
-sudo modprobe btusb
-sudo systemctl restart bluetooth
-sudo rfkill unblock bluetooth
-
-lsusb
-ls /sys/class/bluetooth/
-bluetoothctl list
-```
-
-A successful USB listing should include something like:
-
-```text
-2fe3:000b NordicSemiconductor Zephyr USBD BT HCI
-```
-
-A successful HCI listing should show a second controller if your machine already has internal Bluetooth:
-
-```text
-hci0  hci1
-```
-
-`hci1` is usually the Platypus board.
-
----
-
-## Basic use after flashing
-
-Platypus does not run a menu, screen UI, or standalone app. It becomes a USB Bluetooth controller for the Linux host.
-
-That means you use it from Linux through BlueZ.
-
-Check controller info:
-
-```bash
-sudo btmgmt --index 1 info
-```
-
-Power-cycle only the Platypus controller:
-
-```bash
-sudo btmgmt --index 1 power off
-sudo btmgmt --index 1 power on
-sudo btmgmt --index 1 info
-```
-
-Open the BlueZ interactive shell:
-
-```bash
-bluetoothctl
-```
-
-Inside `bluetoothctl`, select the Platypus controller by its MAC address from `bluetoothctl list`:
-
-```text
-select <Platypus controller MAC>
-power on
-show
-```
-
-Use the board only with devices and environments you own or are explicitly authorized to test.
-
----
-
-## Troubleshooting
-
-### Board only appears after double-tapping RST
-
-That means the board is still only reaching UF2 bootloader mode. The app is not booting.
-
-Check the UF2:
-
-```bash
-python3 tools/inspect_uf2.py releases/platypus-hci-usb-HT-n5262-offset1000.uf2
-```
-
-Required:
-
-```text
-Address min: 0x00001000
-Families: ['0x239a0071']
-```
-
-If the address starts at `0x00026000`, rebuild with the Platypus script.
-
-### File copies but board does not boot
-
-Likely causes:
-
-- UF2 family is wrong.
-- App offset is wrong.
-- Wrong board target was used.
-- The board is still in bootloader mode.
-
-Rebuild with:
-
-```bash
-./install.sh --no-flash
-```
-
-Then flash again:
-
-```bash
-./install.sh --skip-build
-```
-
-### No `hci1`
-
-Check USB first:
-
-```bash
-lsusb
-```
-
-If you see:
-
-```text
-NordicSemiconductor Zephyr USBD BT HCI
-```
-
-but no HCI device, reload Bluetooth support:
-
-```bash
-sudo modprobe btusb
-sudo systemctl restart bluetooth
-sudo rfkill unblock bluetooth
-```
-
-Then check again:
-
-```bash
-ls /sys/class/bluetooth/
-bluetoothctl list
-```
-
-### `west: invalid choice: build`
-
-Run the build from inside the Zephyr workspace, or make sure your Zephyr venv is active and points to the correct `west`:
-
-```bash
-source ~/ble-dongle-build/.venv/bin/activate
-cd ~/ble-dongle-build/zephyrproject/zephyr
-west help | grep build
-```
-
-The Platypus installer expects:
-
-```text
-~/ble-dongle-build/.venv/bin/west
-~/ble-dongle-build/zephyrproject/zephyr
-```
-
-You can override those paths with:
-
-```bash
-ZEPHYR_BASE=/path/to/zephyr WEST=/path/to/west ./install.sh
-```
-
----
-
-## Developer notes
-
-The important build command is effectively:
-
-```bash
-west build -p always \
-  -b heltec_t114_v2/nrf52840/uf2 \
-  firmware/platypus-hci-usb \
-  -d build/platypus-hci-usb-offset1000-nodt \
-  -- \
-  -DCONFIG_USE_DT_CODE_PARTITION=n \
-  -DCONFIG_FLASH_LOAD_OFFSET=0x1000 \
-  -DCONFIG_FLASH_LOAD_SIZE=0xdf000
-```
-
-Then the UF2 family is patched from:
-
-```text
-0xada52840
-```
-
-to:
-
-```text
-0x239a0071
-```
-
-using:
-
-```bash
-python3 tools/patch_uf2_family.py \
-  build/platypus-hci-usb-offset1000-nodt/zephyr/zephyr.uf2 \
-  releases/platypus-hci-usb-HT-n5262-offset1000.uf2 \
-  0x239a0071
-```
-
----
-
-## What Platypus is not
-
-Platypus is not a Bluetooth attack framework, exploit pack, or autonomous radio tool.
-
-It is a firmware/build project that makes the Heltec T114 act as a standard USB Bluetooth HCI controller. What you do with that controller is handled by the Linux host and must stay within your local laws, lab rules, and authorization scope.
-
----
-
-## Safety and authorization
-
-Use Platypus only on systems, devices, and environments you own or have clear permission to test.
-
-This project is intended for:
-
-- Linux Bluetooth development
-- Authorized lab testing
-- Hardware bring-up
-- BlueZ experimentation
-- Defensive research
-- Reproducible firmware builds
-
-Do not use it to interfere with, disrupt, monitor, or access devices without authorization.
-
----
-
-## Credits
-
-Platypus uses Zephyr's Bluetooth HCI USB sample as the firmware base and adds the HT-n5262-specific build and UF2 patching flow needed to make the Heltec T114 boot correctly as a BlueZ-compatible USB controller.
-
-Built for the Urban Poacher / KoalaByte hardware lab workflow.
+## Relationship to `main`
+
+`main` is untouched by this branch. It still builds the plain BlueZ HCI
+firmware and remains the right choice if you just want a removable BLE
+adapter for a Linux Bluetooth stack. Use `naughty-platypus` when you want
+promiscuous, Ubertooth-style packet capture instead.
