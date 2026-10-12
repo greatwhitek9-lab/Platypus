@@ -44,6 +44,8 @@ static uint8_t rx_idx;
 static ble_capture_cb_t user_cb;
 static uint64_t timer1_base_us;
 
+static void radio_ble_isr_entry(const void *arg);
+
 int radio_ble_init(ble_capture_cb_t cb)
 {
     user_cb = cb;
@@ -53,7 +55,7 @@ int radio_ble_init(ble_capture_cb_t cb)
      * reconstruct packet ordering/intervals in the pcap. */
     nrf_timer_mode_set(NRF_TIMER1, NRF_TIMER_MODE_TIMER);
     nrf_timer_bit_width_set(NRF_TIMER1, NRF_TIMER_BIT_WIDTH_32);
-    nrf_timer_frequency_set(NRF_TIMER1, NRF_TIMER_FREQ_1MHz);
+    nrf_timer_prescaler_set(NRF_TIMER1, NRF_TIMER_FREQ_1MHz);
     nrf_timer_task_trigger(NRF_TIMER1, NRF_TIMER_TASK_CLEAR);
     nrf_timer_task_trigger(NRF_TIMER1, NRF_TIMER_TASK_START);
 
@@ -76,7 +78,7 @@ int radio_ble_init(ble_capture_cb_t cb)
     pcnf.whiteen = true;
     nrf_radio_packet_configure(NRF_RADIO, &pcnf);
 
-    nrf_radio_crc_configure(NRF_RADIO, NRF_RADIO_CRC_ADDR_SKIPADDR,
+    nrf_radio_crc_configure(NRF_RADIO, 3, NRF_RADIO_CRC_ADDR_SKIP,
                  0x00065B /* BLE CRC polynomial, init set per-channel */);
 
     IRQ_CONNECT(RADIO_IRQn, 0, radio_ble_isr_entry, NULL, 0);
@@ -128,7 +130,7 @@ void radio_ble_stop(void)
 }
 
 /* RADIO ISR: fires on END (a packet, matching AA, fully received). */
-void radio_ble_isr_entry(const void *arg)
+static void radio_ble_isr_entry(const void *arg)
 {
     ARG_UNUSED(arg);
 
