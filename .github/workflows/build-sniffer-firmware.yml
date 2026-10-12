@@ -1,15 +1,17 @@
 name: Build Platypus Sniffer firmware
 
-# Builds firmware/platypus-sniffer in a container that already has the
-# Zephyr SDK + toolchain installed (the official Zephyr project CI image),
-# patches the UF2 the same way scripts/build_sniffer.sh does locally, and
-# uploads the result so it can be downloaded and flashed without ever
-# compiling Zephyr on a phone/Termux.
+# Builds firmware/platypus-sniffer on GitHub's standard Ubuntu runner (no
+# custom container), installing the Zephyr SDK toolchain fresh each run via
+# `west sdk install`. Patches the UF2 the same way scripts/build_sniffer.sh
+# does locally, then uploads the result so it can be downloaded and flashed
+# without ever compiling Zephyr on a phone/Termux.
 #
-# Everything lives under the runner's default $GITHUB_WORKSPACE rather than
-# a hardcoded /workspace path - some CI container images don't pre-create
-# arbitrary top-level directories, and GITHUB_WORKSPACE is guaranteed to
-# exist no matter which image is used.
+# We deliberately do NOT use a pinned third-party CI container image here:
+# the heltec_t114_v2 board is very new (added to Zephyr's main branch only
+# weeks before this workflow was written) and requires Zephyr's current
+# Python 3.12 minimum, which didn't run cleanly against an older pinned
+# container's glibc. ubuntu-latest ships a recent enough glibc for that, so
+# we build directly on it instead.
 on:
   push:
     branches: [naughty-platypus]
@@ -23,27 +25,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Pin to a specific tag rather than :latest so builds stay reproducible;
-    # bump deliberately when you want a newer Zephyr/SDK version.
-    container: ghcr.io/zephyrproject-rtos/ci:v0.27.4
     steps:
       - name: Check out this repo
         uses: actions/checkout@v4
         with:
           path: repo
 
-      # The pinned CI image's system Python is 3.10, but Zephyr's own build
-      # scripts (as of mid-2025) require Python 3.12+ - without this, west
-      # commands fail with errors like
-      # "TypeError: PurePath.relative_to() got an unexpected keyword
-      # argument 'walk_up'" because that script relies on a 3.12-only
-      # pathlib feature. Installing 3.12 here and using it for every
-      # subsequent step keeps us on current upstream Zephyr instead of
-      # pinning to an old release (which risks losing newer board support).
-      - name: Install Python 3.12 for Zephyr tooling
+      - name: Set up Python 3.12 (Zephyr's current minimum requirement)
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Install host build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ninja-build gperf ccache dfu-util device-tree-compiler \
+            wget xz-utils file make gcc g++ libsdl2-dev libmagic1
+
+      - name: Install west and CMake
+        run: python3 -m pip install -U west cmake
 
       # NOTE: if `heltec_t114_v2` is NOT an upstream Zephyr board (i.e. your
       # local build only works because you have a custom boards/ folder in
@@ -53,19 +54,21 @@ jobs:
       # (e.g. repo/boards/...) and commit it - this workflow picks up a
       # top-level boards/ folder automatically via BOARD_ROOT below.
       - name: Set up west workspace (plain upstream Zephyr checkout)
-        run: |
-          python3 -m pip install -U west
-          west init zephyrproject
+        run: west init zephyrproject
 
       - name: Fetch Zephyr + modules
         working-directory: zephyrproject
         run: |
           west update
-          # Zephyr's own Python dependencies (jsonschema, pyelftools, etc.)
-          # must be installed BEFORE west zephyr-export / west build, since
-          # those commands import Zephyr's build-helper scripts directly.
           python3 -m pip install -r zephyr/scripts/requirements.txt
           west zephyr-export
+
+      - name: Install Zephyr SDK (arm toolchain only, to keep this fast)
+        working-directory: zephyrproject
+        run: |
+          # Passing --toolchains makes this run non-interactively; omitting
+          # it would prompt for a selection, which hangs a CI job forever.
+          west sdk install --toolchains arm-zephyr-eabi
 
       - name: Build firmware
         working-directory: zephyrproject
