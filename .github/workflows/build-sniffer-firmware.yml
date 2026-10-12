@@ -32,6 +32,19 @@ jobs:
         with:
           path: repo
 
+      # The pinned CI image's system Python is 3.10, but Zephyr's own build
+      # scripts (as of mid-2025) require Python 3.12+ - without this, west
+      # commands fail with errors like
+      # "TypeError: PurePath.relative_to() got an unexpected keyword
+      # argument 'walk_up'" because that script relies on a 3.12-only
+      # pathlib feature. Installing 3.12 here and using it for every
+      # subsequent step keeps us on current upstream Zephyr instead of
+      # pinning to an old release (which risks losing newer board support).
+      - name: Install Python 3.12 for Zephyr tooling
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       # NOTE: if `heltec_t114_v2` is NOT an upstream Zephyr board (i.e. your
       # local build only works because you have a custom boards/ folder in
       # your own Zephyr workspace that isn't committed anywhere in this
@@ -41,7 +54,7 @@ jobs:
       # top-level boards/ folder automatically via BOARD_ROOT below.
       - name: Set up west workspace (plain upstream Zephyr checkout)
         run: |
-          pip install -U west
+          python3 -m pip install -U west
           west init zephyrproject
 
       - name: Fetch Zephyr + modules
@@ -51,7 +64,7 @@ jobs:
           # Zephyr's own Python dependencies (jsonschema, pyelftools, etc.)
           # must be installed BEFORE west zephyr-export / west build, since
           # those commands import Zephyr's build-helper scripts directly.
-          pip install -r zephyr/scripts/requirements.txt
+          python3 -m pip install -r zephyr/scripts/requirements.txt
           west zephyr-export
 
       - name: Build firmware
