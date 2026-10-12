@@ -48,8 +48,11 @@ jobs:
         working-directory: zephyrproject
         run: |
           west update
-          west zephyr-export
+          # Zephyr's own Python dependencies (jsonschema, pyelftools, etc.)
+          # must be installed BEFORE west zephyr-export / west build, since
+          # those commands import Zephyr's build-helper scripts directly.
           pip install -r zephyr/scripts/requirements.txt
+          west zephyr-export
 
       - name: Build firmware
         working-directory: zephyrproject
