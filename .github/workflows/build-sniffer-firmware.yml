@@ -91,7 +91,7 @@ jobs:
           python3 tools/patch_uf2_family.py \
             "$GITHUB_WORKSPACE/zephyrproject/build/platypus-sniffer/zephyr/zephyr.uf2" \
             releases/platypus-sniffer-HT-n5262-offset1000.uf2 \
-            --family 0x239a0071
+            0x239a0071
           python3 tools/inspect_uf2.py releases/platypus-sniffer-HT-n5262-offset1000.uf2
 
       - name: Upload built UF2
